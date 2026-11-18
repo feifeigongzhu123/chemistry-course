@@ -57,6 +57,8 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
 .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding:0 4px}
 .foot span{font-size:10px;color:var(--muted)}
 #reset{border:1px solid #e5e7ef;background:#fff;border-radius:999px;padding:8px 14px;font-size:11px;font-weight:700;color:#64748b;cursor:pointer}
+#downloadAll{border:1px solid #c9ece4;background:#e7f7f2;border-radius:999px;padding:8px 14px;font-size:11px;font-weight:800;color:var(--teal-dark);cursor:pointer}
+#downloadAll:disabled{opacity:.65;cursor:default}
 
 /* ===== 课程页 ===== */
 .lesson-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 10px}
@@ -92,6 +94,9 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
 .play:active{transform:scale(.985)}
 .play:disabled{opacity:.7;cursor:default}
 .sound{border:1px solid #e5e7ef;background:#fff;color:#5d6679;font-size:10.5px;font-weight:800;padding:0 13px;border-radius:14px;cursor:pointer}
+.pause{border:1px solid #d7e2f2;background:#f8fafc;color:#475569;font-size:10.5px;font-weight:800;padding:0 12px;border-radius:14px;cursor:pointer}
+.pause:active{transform:scale(.98)}
+button[hidden]{display:none!important}
 .audio-progress{height:4px;background:#e8eef5;border-radius:999px;margin-top:10px;overflow:hidden}
 .audio-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#18a892,#0e8a7b);border-radius:999px}
 .note{font-size:10px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
@@ -434,6 +439,9 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
   .crumb{text-align:left}
   .lesson-nav button{padding:9px 12px;font-size:11px}
   .sound{padding:0 10px}
+  .pause{padding:0 9px}
+  .foot{flex-wrap:wrap}
+  #downloadAll{padding:7px 11px;font-size:10px}
 }
 
 
@@ -863,6 +871,7 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     </div>
     <div class="units" id="units"></div>
     <div class="foot">
+      <button id="downloadAll" type="button">下载本学段语音</button>
       <button id="reset" type="button">重置学习记录</button>
       <span>进度保存在本机浏览器 · <a class="portal" href="index.html">返回总目录</a></span>
     </div>
@@ -2967,14 +2976,15 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
 
       <div class="controls">
         <button class="play" id="play" type="button">▶ 播放讲解</button>
+        <button class="pause" id="pause" type="button" hidden>⏸ 暂停</button>
         <button class="sound" id="sound" type="button">🔊 讲解</button>
       </div>
       <div class="audio-progress"><span id="audioBar"></span></div>
-      <div class="note">3 步动画 · 语音按需加载 · 可重播</div>
+      <div class="note">3 步动画 · 语音按需加载 · 可暂停、重播</div>
     </div>
 
     <div class="q-head">
-      <h2>5 道题 · 中考真题改编</h2>
+      <h2>5 道题 · 高考真题改编</h2>
       <span id="qProgress"></span>
     </div>
     <div id="questions"></div>
@@ -6804,7 +6814,17 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){}
   }
 
-  var current = { point: null, index: -1, step: 0, playing: false, soundOn: true, audio: null, preload: null, timers: [], speechBtn: null };
+  var current = {
+    point: null, index: -1, step: 0, playing: false, paused: false,
+    soundOn: true, audio: null, timers: [], speechBtn: null,
+    from: 0, downloading: false
+  };
+
+  var CACHE_NAME = 'chem-audio-v2';
+  var isFile = location.protocol === 'file:';
+  var canCache = (typeof caches !== 'undefined') && !isFile && window.isSecureContext !== false;
+  var blobUrls = {};
+  var audioPool = [];
 
   function el(id){ return document.getElementById(id); }
   function esc(s){
@@ -6817,40 +6837,168 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     for(var i = 0; i < current.timers.length; i++) clearTimeout(current.timers[i]);
     current.timers = [];
   }
+  function setBar(pct){
+    var bar = el('audioBar');
+    if(!bar) return;
+    pct = Math.max(0, Math.min(100, Number(pct) || 0));
+    bar.style.transition = 'none';
+    bar.style.width = pct + '%';
+  }
+  function resetBar(){ setBar(0); }
+  function setPlayText(t){
+    var b = el('play');
+    if(b) b.textContent = t;
+  }
+  function showPause(show, label){
+    var p = el('pause');
+    if(!p) return;
+    p.hidden = !show;
+    if(!show) p.textContent = '⏸ 暂停';
+    else if(label) p.textContent = label;
+  }
+  function detachAudio(){
+    if(!current.audio) return;
+    var a = current.audio;
+    current.audio = null;
+    a.onended = null;
+    a.ontimeupdate = null;
+    a.onplaying = null;
+    a.onerror = null;
+    a.onloadedmetadata = null;
+    try{ a.pause(); a.currentTime = 0; }catch(e){}
+  }
   function stopAudio(){
     clearTimers();
-    if(current.preload){
-      try{ current.preload.src = ''; }catch(e){}
-      current.preload = null;
-    }
-    if(current.audio){
-      try{ current.audio.pause(); current.audio.currentTime = 0; }catch(e){}
-      current.audio.onended = null;
-      current.audio = null;
-    }
+    detachAudio();
   }
   function stopPlayback(){
     stopAudio();
     current.playing = false;
+    current.paused = false;
+    current.from = 0;
     resetBar();
+    setPlayText('▶ 播放讲解');
     var b = el('play');
-    if(b){ b.disabled = false; b.textContent = '▶ 播放讲解'; }
+    if(b) b.disabled = false;
+    showPause(false);
   }
-  function resetBar(){
-    var bar = el('audioBar');
-    if(!bar) return;
-    bar.style.transition = 'none';
-    bar.style.width = '0%';
+
+  /* ---------- 语音缓存 / 整学段下载 ---------- */
+  function cacheOpen(){
+    return caches.open(CACHE_NAME);
   }
-  function setBar(dur){
-    var bar = el('audioBar');
-    if(!bar) return;
-    bar.style.transition = 'none';
-    bar.style.width = '0%';
-    if(!dur || dur <= 0) return;
-    void bar.offsetWidth;
-    bar.style.transition = 'width ' + dur + 's linear';
-    bar.style.width = '100%';
+  function rememberBlob(src, cache){
+    if(blobUrls[src]) return Promise.resolve(blobUrls[src]);
+    return cache.match(src).then(function(r){
+      if(!r) return null;
+      return r.blob().then(function(b){
+        if(blobUrls[src]) return blobUrls[src];
+        blobUrls[src] = URL.createObjectURL(b);
+        return blobUrls[src];
+      });
+    }).catch(function(){ return null; });
+  }
+  function hydrate(src){
+    if(!canCache || blobUrls[src]) return Promise.resolve();
+    return cacheOpen().then(function(c){ return rememberBlob(src, c); }).catch(function(){});
+  }
+  function hydratePoint(p){
+    if(!canCache) return;
+    cacheOpen().then(function(c){
+      p.steps.forEach(function(s){ rememberBlob(s.audio, c); });
+    }).catch(function(){});
+  }
+  function warm(src){
+    if(!canCache) return Promise.resolve();
+    return cacheOpen().then(function(c){
+      return c.match(src).then(function(hit){
+        if(hit) return rememberBlob(src, c);
+        return fetch(src, { cache: 'no-store' }).then(function(r){
+          if(!r.ok) throw new Error('HTTP ' + r.status);
+          return c.put(src, r.clone()).then(function(){ return rememberBlob(src, c); });
+        });
+      });
+    }).catch(function(){});
+  }
+  function playableSrc(src){ return blobUrls[src] || src; }
+  function allAudio(){
+    var list = [];
+    DATA.forEach(function(p){ p.steps.forEach(function(s){ list.push(s); }); });
+    return list;
+  }
+  function downloadAllAudio(){
+    if(!canCache){
+      window.alert(isFile
+        ? '当前是本地文件打开，语音已经在本机，无需下载。'
+        : '当前地址不是 HTTPS 或 localhost，浏览器不允许整学段缓存；直接播放仍会按需加载。');
+      return;
+    }
+    if(current.downloading) return;
+    var list = allAudio();
+    var totalDur = 0;
+    list.forEach(function(s){ totalDur += (s.dur || 0); });
+    var perSec = /\.mp3$/i.test(list[0].audio) ? 6000 : 32000;
+    var estMb = Math.max(1, Math.round(totalDur * perSec / 1048576));
+    if(estMb >= 20 && !window.confirm('将下载本学段全部 ' + list.length + ' 段语音，约 ' + estMb + ' MB，继续吗？')) return;
+
+    var btn = el('downloadAll');
+    var done = 0, fail = 0, bytes = 0, index = 0;
+    current.downloading = true;
+    if(btn){ btn.disabled = true; btn.textContent = '准备下载…'; }
+
+    function update(){
+      if(btn) btn.textContent = '下载中 ' + done + '/' + list.length +
+        (bytes ? ' · ' + (bytes / 1048576).toFixed(1) + ' MB' : '');
+    }
+    function worker(){
+      if(index >= list.length) return Promise.resolve();
+      var src = list[index++].audio;
+      return cacheOpen().then(function(c){
+        return c.match(src).then(function(hit){
+          if(hit){ done++; update(); return; }
+          return fetch(src, { cache: 'no-store' }).then(function(r){
+            if(!r.ok) throw new Error('HTTP ' + r.status);
+            bytes += Number(r.headers.get('content-length') || 0);
+            return c.put(src, r.clone()).then(function(){ done++; update(); });
+          });
+        }).catch(function(){ fail++; update(); });
+      }).then(function(){ return worker(); });
+    }
+
+    var jobs = [];
+    for(var k = 0; k < 3; k++) jobs.push(worker());
+    Promise.all(jobs).then(function(){
+      current.downloading = false;
+      if(btn){
+        btn.disabled = false;
+        btn.textContent = fail ? ('下载完成，失败 ' + fail + ' 段') : ('语音已缓存 ' + done + ' 段 ✓');
+      }
+      list.forEach(function(s){ hydrate(s.audio); });
+    }).catch(function(){
+      current.downloading = false;
+      if(btn){ btn.disabled = false; btn.textContent = '下载失败，请重试'; }
+    });
+  }
+  function updateDownloadState(){
+    var btn = el('downloadAll');
+    if(!btn || current.downloading) return;
+    if(!canCache){
+      btn.textContent = isFile ? '本地文件 · 无需下载' : '需 HTTPS 才能整学段缓存';
+      btn.disabled = true;
+      return;
+    }
+    var list = allAudio();
+    cacheOpen().then(function(c){
+      return Promise.all(list.map(function(s){ return c.match(s.audio); }));
+    }).then(function(hits){
+      if(current.downloading) return;
+      var hit = 0;
+      hits.forEach(function(h){ if(h) hit++; });
+      btn.disabled = false;
+      btn.textContent = hit === list.length
+        ? ('语音已缓存 ' + hit + ' 段 ✓')
+        : (hit ? ('继续下载语音 ' + hit + '/' + list.length) : '下载本学段语音');
+    }).catch(function(){});
   }
 
   /* ---------- 首页 ---------- */
@@ -6947,6 +7095,7 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
       wrap.appendChild(unit);
     });
     updateStats();
+    updateDownloadState();
   }
 
   /* ---------- 课程页 ---------- */
@@ -7038,70 +7187,134 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     if(!current.point) return;
     stopAudio();
     current.playing = true;
+    current.paused = false;
+    current.from = (typeof from === 'number' && from >= 0 && from < 3) ? from : 0;
     var btn = el('play');
-    btn.disabled = true;
-    btn.textContent = '播放中…';
-    playStep(from || 0);
+    if(btn) btn.disabled = true;
+    setPlayText('加载语音…');
+    showPause(false);
+    playStep(current.from);
   }
 
   function preloadStep(i){
-    if(!current.point || !current.soundOn || i >= 3) return;
-    try{
-      if(current.preload){ current.preload.src = ''; }
-      var a = new Audio(current.point.steps[i].audio);
-      a.preload = 'auto';
-      a.load();
-      current.preload = a;
-    }catch(e){}
+    if(!current.point || i >= 3) return;
+    warm(current.point.steps[i].audio);
+  }
+
+  function failStep(i){
+    detachAudio();
+    current.playing = false;
+    current.paused = false;
+    current.from = i;
+    resetBar();
+    var b = el('play');
+    if(b){ b.disabled = false; b.textContent = '↻ 重试'; }
+    showPause(false);
   }
 
   function playStep(i){
     if(!current.playing || !current.point) return;
     if(i >= 3){
       current.playing = false;
+      current.paused = false;
+      current.from = 0;
+      setPlayText('↻ 重播');
       var b = el('play');
-      b.disabled = false;
-      b.textContent = '↻ 重播';
+      if(b) b.disabled = false;
+      showPause(false);
+      setBar(100);
       markLearned();
       return;
     }
-    setStep(i);
-    var s = current.point.steps[i];
-    var wait = Math.max(2200, (s.dur || 0) * 1000 + 300);
-    setBar(s.dur || 0);
-    preloadStep(i + 1);
 
-    if(!current.soundOn){
-      current.timers.push(setTimeout(function(){ playStep(i + 1); }, wait));
+    detachAudio();
+    current.step = i;
+    current.from = i;
+    current.paused = false;
+    setStep(i);
+    resetBar();
+    setPlayText('加载语音…');
+
+    var s = current.point.steps[i];
+
+    var a;
+    try{
+      a = new Audio(playableSrc(s.audio));
+    }catch(e){
+      failStep(i);
       return;
     }
+    current.audio = a;
+    a.preload = 'auto';
+    a.muted = !current.soundOn;
+    audioPool.push(a);
+    if(audioPool.length > 120) audioPool.shift();
 
-    var a = null;
+    a.onloadedmetadata = function(){
+      if(current.audio !== a) return;
+      setBar(0);
+    };
+    a.ontimeupdate = function(){
+      if(current.audio !== a) return;
+      var d = a.duration;
+      if(!isFinite(d) || d <= 0) d = s.dur || 0;
+      setBar(d > 0 ? (a.currentTime / d) * 100 : 0);
+    };
+    a.onplaying = function(){
+      if(current.audio !== a) return;
+      setPlayText('播放中…');
+      showPause(true, '⏸ 暂停');
+      preloadStep(i + 1);
+    };
+    a.onended = function(){
+      if(current.audio !== a) return;
+      a.onended = null;
+      current.audio = null;
+      playStep(i + 1);
+    };
+    a.onerror = function(){
+      if(current.audio !== a) return;
+      failStep(i);
+    };
+
+    var pr;
     try{
-      a = new Audio(s.audio);
-      a.muted = false;
-      current.audio = a;
-      var done = false;
-      var fallback = setTimeout(function(){
-        if(done) return;
-        done = true;
-        playStep(i + 1);
-      }, wait + 900);
-      current.timers.push(fallback);
-      a.onended = function(){
-        if(done) return;
-        done = true;
-        clearTimeout(fallback);
-        playStep(i + 1);
-      };
+      pr = a.play();
+    }catch(e){
+      failStep(i);
+      return;
+    }
+    if(pr && pr.catch){
+      pr.catch(function(err){
+        if(current.audio !== a) return;
+        if(err && err.name === 'NotAllowedError'){
+          current.paused = true;
+          setPlayText('点击继续');
+          showPause(true, '▶ 继续');
+        }else{
+          failStep(i);
+        }
+      });
+    }
+  }
+
+  function togglePause(){
+    if(!current.audio || !current.playing) return;
+    var a = current.audio;
+    var p = el('pause');
+    if(current.paused){
+      current.paused = false;
+      if(p) p.textContent = '⏸ 暂停';
+      setPlayText('播放中…');
       var pr = a.play();
       if(pr && pr.catch){
-        pr.catch(function(){
-          /* 浏览器拦截或文件缺失时，交给超时兜底 */
-        });
+        pr.catch(function(){ current.paused = true; if(p) p.textContent = '▶ 继续'; });
       }
-    }catch(e){
-      current.timers.push(setTimeout(function(){ playStep(i + 1); }, wait));
+    }else{
+      current.paused = true;
+      try{ a.pause(); }catch(e){}
+      if(p) p.textContent = '▶ 继续';
+      setPlayText('已暂停');
     }
   }
 
@@ -7256,6 +7469,8 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     renderQuestions();
     setStep(typeof stepIdx === 'number' ? stepIdx : 0);
     updateLearnedTag();
+    current.from = 0;
+    hydratePoint(p);
 
     var prev = el('prevPoint'), next = el('nextPoint');
     prev.disabled = current.index <= 0;
@@ -7288,8 +7503,10 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
   el('play').addEventListener('click', function(){
     if(!current.point) return;
     if(current.playing) return;
-    startPlayback(0);
+    startPlayback(current.from || 0);
   });
+  el('pause').addEventListener('click', togglePause);
+  el('downloadAll').addEventListener('click', downloadAllAudio);
   el('sound').addEventListener('click', function(){
     current.soundOn = !current.soundOn;
     el('sound').textContent = current.soundOn ? '🔊 讲解' : '🔇 静音';
@@ -7316,7 +7533,7 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
   /* ---------- 初始化 ---------- */
   renderHome();
 
-  var m = (location.hash || '').match(/^#((?:j[123]|s[1-8])-(?:[1-9]|1[0-2]))(?:\/([0-2]))?$/);
+  var m = (location.hash || '').match(/^#((?:j[123]|s[1-8]|g[23])-(?:[1-9]|1[0-2]))(?:\/([0-2]))?$/);
   if(m && POINT_MAP[m[1]]){
     openPoint(m[1], m[2] ? Number(m[2]) : 0);
   }
@@ -7340,13 +7557,26 @@ h1{font-size:23px;font-weight:900;letter-spacing:-.4px;margin:10px 0 6px;line-he
     get current(){
       return {
         playing: current.playing,
+        paused: current.paused,
         step: current.step,
         soundOn: current.soundOn,
         audioTime: current.audio ? current.audio.currentTime : 0,
         audioDur: current.audio ? current.audio.duration : 0,
-        audioSrc: current.audio ? current.audio.src : ''
+        audioSrc: current.audio ? current.audio.src : '',
+        bar: el('audioBar') ? el('audioBar').style.width : ''
       };
     },
+    activeAudios: function(){
+      return audioPool.filter(function(a){ return !a.paused && !a.ended; }).length;
+    },
+    seek: function(sec){
+      if(!current.audio) return;
+      var d = current.audio.duration;
+      if(!isFinite(d) || d <= 0) return;
+      current.audio.currentTime = Math.max(0, Math.min(d - 0.25, sec));
+    },
+    downloadAll: downloadAllAudio,
+    canCache: canCache,
     store: store
   };
 })();
