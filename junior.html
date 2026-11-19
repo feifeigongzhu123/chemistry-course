@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-version="v1.2.0" data-build="2026-11-19">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="version" content="1.2.0">
 <title>初中化学 · 动画精讲（全册）</title>
 <style>
 ﻿*{box-sizing:border-box}
@@ -100,6 +101,8 @@ button[hidden]{display:none!important}
 .audio-progress{height:4px;background:#e8eef5;border-radius:999px;margin-top:10px;overflow:hidden}
 .audio-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#18a892,#0e8a7b);border-radius:999px}
 .note{font-size:10px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
+.ver-line{font-size:10px;color:var(--muted);text-align:center;margin-top:8px;line-height:1.6}
+.ver-line b{color:var(--teal-dark);font-weight:800}
 .stage-hint{display:none;font-size:10px;color:var(--muted);text-align:center;margin:6px 0 -4px}
 
 /* ===== 题目 ===== */
@@ -777,6 +780,7 @@ button[hidden]{display:none!important}
       <button id="reset" type="button">重置学习记录</button>
       <span>进度保存在本机浏览器 · <a class="portal" href="index.html">返回总目录</a></span>
     </div>
+    <div class="ver-line" id="appVersion"></div>
   </section>
 
   <section id="lesson" class="view hidden">
@@ -3628,6 +3632,7 @@ button[hidden]{display:none!important}
       </div>
       <div class="audio-progress"><span id="audioBar"></span></div>
       <div class="note">3 步动画 · 语音按需加载 · 可暂停、重播</div>
+      <div class="ver-line" id="lessonVersion"></div>
     </div>
 
     <div class="q-head">
@@ -9063,6 +9068,11 @@ button[hidden]{display:none!important}
 (function(){
   'use strict';
 
+  var APP_VERSION = '1.2.0';
+  var APP_BUILD = '2026-11-19';
+  document.documentElement.setAttribute('data-version', APP_VERSION);
+  document.documentElement.setAttribute('data-build', APP_BUILD);
+
   var errs = [];
   document.documentElement.setAttribute('data-js-errors', '0');
   function noteErr(msg){
@@ -9383,6 +9393,11 @@ button[hidden]{display:none!important}
     });
     updateStats();
     updateDownloadState();
+    var v = el('appVersion');
+    if(v){
+      v.innerHTML = '版本 <b>v' + APP_VERSION + '</b> · ' + APP_BUILD + ' · 本学段 ' + DATA.length +
+        ' 点 / ' + totalSteps + ' 步 / ' + totalQs + ' 题';
+    }
   }
 
   /* ---------- 课程页 ---------- */
@@ -9790,6 +9805,8 @@ button[hidden]{display:none!important}
     renderQuestions();
     setStep(typeof stepIdx === 'number' ? stepIdx : 0);
     updateLearnedTag();
+    var lv = el('lessonVersion');
+    if(lv) lv.textContent = '版本 v' + APP_VERSION + ' · ' + APP_BUILD + ' · ' + p.unit;
     current.from = 0;
     hydratePoint(p);
 

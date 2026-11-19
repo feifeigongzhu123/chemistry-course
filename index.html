@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-version="v1.2.0" data-build="2026-11-19">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="version" content="1.2.0">
 <title>化学动画课 · 全学段入口</title>
 <style>
   *{box-sizing:border-box}
@@ -34,6 +35,21 @@
   .stat b{display:block;font-size:21px;font-weight:900;color:var(--teal-dark)}
   .stat span{display:block;font-size:10px;color:var(--muted);margin-top:2px}
   .features{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .release{padding:18px;margin-top:2px}
+  .release-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .release-tag{font-size:12px;font-weight:900;color:#fff;background:var(--teal);border-radius:999px;padding:5px 10px}
+  .release-date{font-size:10.5px;color:var(--muted)}
+  .release-list{margin:0;padding-left:18px;font-size:11.5px;line-height:1.8;color:#475569}
+  .release-list li{margin:3px 0}
+  .release-old{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+  .release-old summary{cursor:pointer;font-size:11px;font-weight:800;color:var(--teal-dark)}
+  .release-item{margin-top:8px;font-size:10.5px;color:#64748b;line-height:1.7}
+  .release-item b{font-size:11px;color:var(--ink);margin-right:8px}
+  .release-item span{font-size:9.5px;color:var(--muted)}
+  .release-item p{margin:3px 0 0}
+
+  .version{margin-top:12px;font-size:10.5px;color:var(--muted)}
+  .version b{color:var(--teal-dark);font-weight:800}
   .feature{font-size:10.5px;font-weight:700;color:#5b6b82;background:#f8fafc;border:1px solid #e8eef5;border-radius:999px;padding:6px 10px}
   .section-title{display:flex;align-items:baseline;justify-content:space-between;margin:24px 4px 10px}
   .section-title h2{font-size:16px;font-weight:900;margin:0}
@@ -65,6 +81,8 @@
     .grade{padding:15px}
     .stats{gap:7px}
     .stat b{font-size:18px}
+    .release{padding:14px}
+    .release-list{font-size:11px}
   }
 </style>
 </head>
@@ -88,6 +106,7 @@
       <span class="feature">4 选项 · 逐项解析</span>
       <span class="feature">进度保存在本机</span>
     </div>
+    <div class="version">版本 <b>v1.2.0</b> · 2026-11-19 · 78 点 / 234 步 / 390 题</div>
   </section>
 
   <div class="section-title">
@@ -96,11 +115,34 @@
   </div>
   <div class="grades" id="grades"></div>
 
+  <div class="section-title">
+    <h2>版本发布</h2>
+    <span>当前 v1.2.0 · 2026-11-19</span>
+  </div>
+  <div class="release card">
+    <div class="release-head">
+      <span class="release-tag">v1.2.0</span>
+      <span class="release-date">2026-11-19</span>
+    </div>
+    <ul class="release-list">
+      <li>高三扩至 14 点：新增有机合成与推断、卤代烃与醇酚、醛酮与羧酸酯、化学实验基础与安全、化学反应原理综合、物质结构与性质专题。</li>
+      <li>全站 78 个知识点 / 234 步动画 / 390 道改编题。</li>
+      <li>音频进度条跟随真实播放，支持暂停/继续，自动切段不叠音。</li>
+      <li>支持整学段语音缓存下载；手机实验台随讲解自动横向定位。</li>
+    </ul>
+    <details class="release-old">
+      <summary>历史版本</summary>
+      <div class="release-item"><b>v1.1.0</b><span>2026-11-18</span><p>新增高二 8 点、高三 8 点，共 72 点 / 216 步 / 360 题；新增 48 段语音。</p></div>
+      <div class="release-item"><b>v1.0.0</b><span>2026-11-17</span><p>初中 33 点 + 高一 23 点，共 56 点 / 168 步 / 280 题；统一入口 index.html。</p></div>
+    </details>
+  </div>
+
   <div class="foot">
     <div>音频按学段、按步加载：进入某个学段后，只在播放时下载当前这一步的音频，不会一次加载全部音频。</div>
     <div>分享给他人：把整个 <code>chemistry</code> 文件夹一起发送，对方解压后双击 <code>index.html</code> 即可，音频会随文件夹一起播放。</div>
     <div>局域网访问：在项目目录运行 <code>python serve.py</code>，同一 Wi-Fi 下的手机/电脑打开终端显示的地址。</div>
-    <div><a href="README.md">查看使用与部署说明</a></div>
+    <div><a href="README.md">查看使用与部署说明</a> · <a href="CHANGELOG.md">完整更新日志</a></div>
+    <div>© 2026 化学动画课 · v1.2.0 · 保留所有权利</div>
   </div>
 </div>
 

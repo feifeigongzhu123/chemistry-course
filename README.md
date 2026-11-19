@@ -7,6 +7,10 @@
 - 高二化学 8 个知识点 → `senior2.html`
 - 高三化学 14 个知识点 → `senior3.html`
 
+## 版本
+
+当前 **v1.2.0**（2026-11-19）。完整发布记录见 [CHANGELOG.md](CHANGELOG.md)，版本号同时写入 `VERSION` 和页面 `data-version`。
+
 ## 覆盖范围
 
 ### 初中 33 点（12 单元）
@@ -111,6 +115,8 @@
 
 ```
 index.html             # 统一入口：初中 / 高一 / 高二 / 高三
+VERSION                # 当前版本号
+CHANGELOG.md           # 版本发布记录
 serve.py               # 局域网静态服务器（python serve.py）
 junior.html            # 初中主入口，数据/场景内联
 senior.html            # 高一主入口，数据/场景内联
