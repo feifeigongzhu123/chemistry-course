@@ -106,7 +106,7 @@
 
 1. 在 GitHub 新建 Token（classic `repo` 或 fine-grained 的 Contents / Pages 写权限）。
 2. 把 Token 写入 `D:\AI\ZCode\chemistry\.gh_token`（只放一行）。
-3. 运行 `python _build\gh_upload.py`，脚本会建 blob、提交 `main`、等待 Pages 构建并检查首页与 MP3。
+3. 日常小改动运行 `python _build\gh_fast_update.py`，只上传改动的非音频文件；全量重建时运行 `python _build\gh_upload.py`。
 4. 成功后删除 `.gh_token`，并到 GitHub 撤销该 Token。
 
 `docs/` 已包含 `.nojekyll`，不需要 Jekyll；音频是静态 MP3，GitHub Pages 直接按普通文件提供。
