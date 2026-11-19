@@ -2967,7 +2967,7 @@ button[hidden]{display:none!important}
 </svg>
 </div>
       </div>
-      <div class="stage-hint">左右滑动查看完整实验台</div>
+      <div class="stage-hint">讲解自动定位实验区 · 也可左右滑动</div>
 
       <div class="caption" id="caption"></div>
       <div class="equation" id="equation"></div>
@@ -7144,6 +7144,36 @@ button[hidden]{display:none!important}
     }
   }
 
+  function centerZone(i){
+    var wrap = el('stageBox');
+    if(!wrap || !current.point) return;
+    if(wrap.scrollWidth <= wrap.clientWidth + 4) return;
+    var sc = document.getElementById('scene-' + current.point.id);
+    if(!sc) return;
+    var svg = sc.querySelector('svg');
+    if(!svg) return;
+    var groups = [];
+    for(var k = 0; k < svg.children.length; k++){
+      var node = svg.children[k];
+      if(node.tagName && node.tagName.toLowerCase() === 'g') groups.push(node);
+    }
+    var g = groups[i] || groups[0];
+    if(!g) return;
+    var wr = wrap.getBoundingClientRect();
+    var gr = g.getBoundingClientRect();
+    var center = gr.left - wr.left + wrap.scrollLeft + gr.width / 2;
+    var target = center - wrap.clientWidth / 2;
+    var max = wrap.scrollWidth - wrap.clientWidth;
+    target = Math.max(0, Math.min(max, target));
+    if(Math.abs(wrap.scrollLeft - target) < 4) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(wrap.scrollTo){
+      wrap.scrollTo({ left: target, behavior: reduce ? 'auto' : 'smooth' });
+    }else{
+      wrap.scrollLeft = target;
+    }
+  }
+
   function setStep(i){
     var p = current.point;
     if(!p) return;
@@ -7181,6 +7211,10 @@ button[hidden]{display:none!important}
     });
 
     if(i === 2) markLearned();
+
+    var scrollToZone = function(){ centerZone(i); };
+    if(window.requestAnimationFrame) window.requestAnimationFrame(scrollToZone);
+    else setTimeout(scrollToZone, 30);
   }
 
   function startPlayback(from){
@@ -7526,6 +7560,14 @@ button[hidden]{display:none!important}
     if(current.point) goHome();
   });
 
+  var resizeTimer = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      if(current.point) centerZone(current.step);
+    }, 150);
+  });
+
   if('speechSynthesis' in window){
     window.speechSynthesis.onvoiceschanged = function(){ /* 触发一次语音列表加载 */ };
   }
@@ -7533,7 +7575,7 @@ button[hidden]{display:none!important}
   /* ---------- 初始化 ---------- */
   renderHome();
 
-  var m = (location.hash || '').match(/^#((?:j[123]|s[1-8]|g[23])-(?:[1-9]|1[0-2]))(?:\/([0-2]))?$/);
+  var m = (location.hash || '').match(/^#((?:j[123]|s[1-8]|g[23])-(?:[1-9]|1[0-4]))(?:\/([0-2]))?$/);
   if(m && POINT_MAP[m[1]]){
     openPoint(m[1], m[2] ? Number(m[2]) : 0);
   }

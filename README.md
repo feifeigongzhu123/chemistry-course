@@ -59,6 +59,7 @@
 - 3 段中文语音（Windows Huihui，16 kHz / 16 bit / 单声道），音频结束自动切下一步；
 - 进度条由真实播放时间驱动，缓冲/下载时不会先走；切换步骤会先停止上一段音频，不会叠音；
 - 播放中可「暂停 / 继续」，暂停后进度条与时间一起冻结；
+- 手机端实验台宽度大于屏幕时，会随着讲解步骤自动横向定位到当前讲解区；手动左右滑动仍然保留；
 - 5 道题：初中标「中考真题改编」，高中标「高考真题改编」；4 个选项、逐项解析、可听讲解；
 - 每个点 5 题答案覆盖 A/B/C/D，且不会连续两题同答案；
 - localStorage 记录已学知识点、答题记录和错题，可重置。
@@ -163,6 +164,7 @@ python _build\cdp_test_docs_grade.py # docs 发布版 MP3 播放检查
 python _build\cdp_test_g3b.py       # 高三新增 6 点 390px 验收
 python _build\cdp_test_docs_g3b.py  # docs 新增 6 点 MP3/缓存验收
 python _build\cdp_audio_test.py     # 进度同步/暂停/切段/整学段缓存
+python _build\cdp_test_scroll.py    # 390px 讲解自动定位实验区
 python _build\index_test.py          # 入口页 390px 检查
 python _build\serve_test.py          # 静态服务器页面/音频访问检查
 python _build\shots_final.py         # 初中验收截图
