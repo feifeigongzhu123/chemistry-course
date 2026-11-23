@@ -9,7 +9,7 @@
 
 ## 版本
 
-当前 **v1.2.0**（2026-11-19）。完整发布记录见 [CHANGELOG.md](CHANGELOG.md)，版本号同时写入 `VERSION` 和页面 `data-version`。
+当前 **v1.3.0**（2026-11-23）。完整发布记录见 [CHANGELOG.md](CHANGELOG.md)，版本号同时写入 `VERSION` 和页面 `data-version`。
 
 ## 覆盖范围
 
@@ -86,6 +86,8 @@
 | 高三 | 14 | 42 | 70 | 42 段 | 约 36 MB |
 | 合计 | 78 | 234 | 390 | 234 段 | 约 204 MB |
 
+另含 **88 道 2021–2026 高考化学真题**（辽宁/黑吉辽蒙卷全部选择题），带原题图、逐项解析、单题重做；按知识点挂载，基础 5 题后出现「继续做真题」。
+
 ## 分享给其他人
 
 音频不是只能在本机播放，它们是普通的静态 WAV 文件，用相对路径 `audio/...` 引用；页面和音频一起分享或部署即可。
@@ -126,6 +128,8 @@ data/junior.json       # 初中 33 点课程 + 题库
 data/senior.json       # 高一 23 点课程 + 题库
 data/senior2.json      # 高二 8 点课程 + 题库
 data/senior3.json      # 高三 14 点课程 + 题库
+data/real_questions.json # 2021–2026 高考化学真题 88 道
+real/ln*.png           # 真题原题图
 audio/j1-1/step1.wav   # 初中 99 段：j1-*、j2-*、j3-*
 audio/s1-1/step1.wav   # 高一 69 段：s1-* ... s8-*
 audio/g2-1/step1.wav   # 高二 24 段：g2-1 ... g2-8
@@ -169,6 +173,7 @@ python _build\cdp_test_grade.py      # 高二/高三 390px + 深链 + 答题 + �
 python _build\cdp_test_docs_grade.py # docs 发布版 MP3 播放检查
 python _build\cdp_test_g3b.py       # 高三新增 6 点 390px 验收
 python _build\cdp_test_docs_g3b.py  # docs 新增 6 点 MP3/缓存验收
+python _build\cdp_test_real_chem.py # 高考真题加练 UI 验收
 python _build\cdp_audio_test.py     # 进度同步/暂停/切段/整学段缓存
 python _build\cdp_test_scroll.py    # 390px 讲解自动定位实验区
 python _build\index_test.py          # 入口页 390px 检查

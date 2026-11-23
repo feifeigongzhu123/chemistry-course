@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-version="v1.2.0" data-build="2026-11-19">
+<html lang="zh-CN" data-version="v1.3.0" data-build="2026-11-23">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="version" content="1.2.0">
+<meta name="version" content="1.3.0">
 <title>高三化学 · 动画精讲</title>
 <style>
 ﻿*{box-sizing:border-box}
@@ -448,6 +448,36 @@ button[hidden]{display:none!important}
 }
 
 
+
+/* ===== 高考真题加练 ===== */
+.q-head{flex-wrap:wrap;align-items:center}
+#qProgress{margin-left:auto}
+.redo-all{border:1px solid #e5e7ef;background:#fff;border-radius:999px;padding:7px 12px;font-size:10.5px;font-weight:800;color:#3a4a63;cursor:pointer}
+.redo-all:disabled{cursor:default}
+.real-teaser{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;margin-top:12px;border:1px solid #c7d7f5;background:linear-gradient(135deg,#ffffff,#eef5ff)}
+.real-teaser b{display:block;font-size:14px;color:#1e3a8a}
+.real-teaser span{display:block;font-size:11px;color:#64748b;margin-top:4px;line-height:1.6}
+#openReal{border:0;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:900;color:#fff;background:linear-gradient(135deg,#3b82f6,#1d4ed8);cursor:pointer;white-space:nowrap}
+.real-head{margin-top:22px;border-top:1px dashed #dbe6f2;padding-top:16px}
+.multi-tip{font-size:10.5px;color:#1d4ed8;background:#eef5ff;border:1px solid #d6e4fb;border-radius:9px;padding:7px 10px;margin:8px 0}
+.submit-answer{border:0;border-radius:12px;padding:10px 16px;font-size:12px;font-weight:900;color:#fff;background:linear-gradient(135deg,#3b82f6,#1d4ed8);cursor:pointer;margin:8px 0 2px}
+.submit-answer:disabled{opacity:.55;cursor:default}
+.opt.selected{border-color:#1d4ed8;background:#eef5ff;box-shadow:inset 0 0 0 1px #1d4ed8}
+.opt.selected .letter{background:#1d4ed8;color:#fff}
+.q-actions{display:flex;gap:8px;flex-wrap:wrap}
+.redo{border:1px solid #d7e2f2;background:#fff;border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:800;color:#3a4a63;cursor:pointer}
+.redo:hover{border-color:#b9cdf0;color:#1e3a8a}
+.real-tag{font-size:10px;font-weight:900;color:#fff;background:#dc2626;border-radius:999px;padding:4px 8px;letter-spacing:.5px}
+.q-image{display:block;width:100%;max-width:760px;height:auto;margin:4px auto 12px;border:1px solid #e3e9f2;border-radius:12px;background:#fff}
+@media(max-width:560px){
+  .real-teaser{flex-direction:column;align-items:flex-start}
+  .q-image{max-width:100%}
+}
+
+.opts.compact{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts.compact .opt{justify-content:center;padding:12px 8px}
+.opts.compact .opt .letter{margin-top:0}
+@media(max-width:560px){.opts.compact{grid-template-columns:1fr 1fr}}
 
 /* ===================== 高三 选择性必修3 + 专题 g3-1 ~ g3-8 ===================== */
 
@@ -1909,8 +1939,10 @@ button[hidden]{display:none!important}
     <div class="q-head">
       <h2>5 道题 · 高考真题改编</h2>
       <span id="qProgress"></span>
+      <button id="redoAll" type="button" class="redo-all">↻ 重做这 5 题</button>
     </div>
     <div id="questions"></div>
+    <div id="realBank"></div>
 
     <div class="lesson-nav">
       <button id="prevPoint" type="button">← 上一个知识点</button>
@@ -2240,6 +2272,34 @@ button[hidden]{display:none!important}
     "explanation": "甲苯的甲基受苯环影响，能被酸性高锰酸钾溶液氧化为羧基，使溶液褪色。苯环中不存在交替单双键；乙烯是平面结构；乙炔能加成。对应第 3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2022-q4",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-2",
+    "multi": false,
+    "image": "real/ln2022-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：苯乙炔分子中含有碳碳三键，能使酸性\n4\nKMnO 溶液褪色，A 错误；\n第3 页 | 共21 页",
+     "B 错：如图所示，\n，苯乙炔分子中最多有6 个原子共直线，B 错误；",
+     "C 对：苯乙炔分子中含有苯环和碳碳三键，能发生加成反应，苯环上的氢原子能被取代，可发生取代反应，\nC 正确；",
+     "D 错：苯乙炔属于烃，难溶于水，D 错误；\n故选答案C；\n【点睛】本题考查苯乙炔的结构与性质，根据官能团的特点进行判断。"
+    ],
+    "explanation": "正确答案是C。A．苯乙炔分子中含有碳碳三键，能使酸性\n4\nKMnO 溶液褪色，A 错误；\n第3 页 | 共21 页 \nB．如图所示，\n，苯乙炔分子中最多有6 个原子共直线，B 错误；\nC．苯乙炔分子中含有苯环和碳碳三键，能发生加成反应，苯环上的氢原子能被取代，可发生取代反应，\nC 正确；\nD．苯乙炔属于烃，难溶于水，D 错误；\n故选答案C；",
+    "real": true
+   }
+  ],
   "grade": "senior"
  },
  {
@@ -2398,6 +2458,60 @@ button[hidden]{display:none!important}
      "D 错：水解用 NaOH 水溶液，消去用 NaOH 醇溶液。"
     ],
     "explanation": "羧基酸性比碳酸强，能与碳酸氢钠反应。酯在碱性条件下水解更完全；羟基碳上无氢的醇不能氧化为醛；卤代烃水解和消去的溶剂不同。对应第 2、3 步。"
+   }
+  ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q5",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-3",
+    "multi": false,
+    "image": "real/ln2021-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：根据等效氢原理可知，a 的一氯代物有3 种如图所示：\n，A 正确；",
+     "B 错：b 的加聚产物是：\n，\n的单体是苯乙烯不是b，B 错误；",
+     "C 错：c 中碳原子的杂化方式由6 个\n2\nsp ，2 个sp3，C 错误；\n第4 页 | 共24 页",
+     "D 错：a、b、c 的分子式分别为：C8H6，C8H6，C8H8，故c 与a、b 不互为同分异构体，D 错误；"
+    ],
+    "explanation": "正确答案是A。A．根据等效氢原理可知，a 的一氯代物有3 种如图所示：\n，A 正确；\nB．b 的加聚产物是：\n，\n的单体是苯乙烯不是b，B 错误；\nC．c 中碳原子的杂化方式由6 个\n2\nsp ，2 个sp3，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q12",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-3",
+    "multi": false,
+    "image": "real/ln2025-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：II 中\n4\nMnO和MnO2 在酸性条件下与过量的KI 反应得到I2 和Mn2+，存在\nMnO2+2I-+4H+=Mn2++I2+2H2O，A 正确；",
+     "B 错：II 中避光防止I2 升华挥发，加盖防止I-被氧气氧化，B 正确；",
+     "C 对：整个反应中，KMnO4 得电子生成Mn2+，有机物和碘离子失去电子数目与KMnO4 得电子数目相等，III\n中消耗的Na2S2O3 越多，说明生成的I2 单质越多，也说明有机物消耗的KMnO4 的量少，水样中的COD 值\n越低，C 错误；",
+     "D 错：若I 中为酸性条件，Cl-会与KMnO4 反应，水样中的COD 值偏高，D 正确；\n答案选C。"
+    ],
+    "explanation": "正确答案是C。A．II 中\n4\nMnO和MnO2 在酸性条件下与过量的KI 反应得到I2 和Mn2+，存在\nMnO2+2I-+4H+=Mn2++I2+2H2O，A 正确；\nB．II 中避光防止I2 升华挥发，加盖防止I-被氧气氧化，B 正确；",
+    "real": true
    }
   ],
   "grade": "senior"
@@ -2560,6 +2674,34 @@ button[hidden]{display:none!important}
     "explanation": "纤维素和淀粉都是多糖，完全水解的最终产物都是葡萄糖。蛋白质变性不可逆；糖类不一定有甜味；核酸不只存在于细胞核中。对应第 1、2、3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2024-q9",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-4",
+    "multi": false,
+    "image": "real/ln2024-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：1mol 糖水解后能产生2~10mol 单糖的糖称为寡糖或者低聚糖，环六糊精是葡萄糖的缩合物，\n属于寡糖，A 正确；\n的\n第6 页/共23 页",
+     "B 对：要和环六糊精形成超分子，该分子的直径必须要匹配环六糊精的空腔尺寸，故不是所有的非极性分子\n都可以被环六糊精包含形成超分子，B 错误；",
+     "C 错：由于环六糊精腔内极性小，可以将苯环包含在其中，腔外极性大，故将极性基团甲氧基暴露在反应环\n境中，C 正确；",
+     "D 错：环六糊精空腔外有多个羟基，可以和水形成分子间氢键，故环六糊精能溶解在水中，而氯代苯甲醚不\n溶于水，所以可以选择水作为萃取剂分离环六糊精和氯代苯甲醚，D 正确；\n故选B。"
+    ],
+    "explanation": "正确答案是B。A．1mol 糖水解后能产生2~10mol 单糖的糖称为寡糖或者低聚糖，环六糊精是葡萄糖的缩合物，\n属于寡糖，A 正确；\n的\n第6 页/共23 页\nB．要和环六糊精形成超分子，该分子的直径必须要匹配环六糊精的空腔尺寸，故不是所有的非极性分子\n都可以被环六糊精包含形成超分子，B 错误；",
+    "real": true
+   }
+  ],
   "grade": "senior"
  },
  {
@@ -2718,6 +2860,60 @@ button[hidden]{display:none!important}
      "D 错：网状高分子不溶于任何溶剂。"
     ],
     "explanation": "缩聚反应在形成高分子的同时生成水、氯化氢等小分子，所以链节组成与单体不同。加聚无小分子副产物；高分子没有固定相对分子质量；网状高分子不溶不熔。对应第 1、2、3 步。"
+   }
+  ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q12",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-5",
+    "multi": false,
+    "image": "real/ln2021-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：由题干图中曲线①②可知，其他条件相同时，催化剂浓度越大，反应所需要的时间更短，故反\n应速率越大，A 正确；\n第9 页 | 共24 页",
+     "B 对：由题干图中曲线①③可知，其他条件相同时，降冰片烯浓度①是③的两倍，所用时间①也是③的两倍，\n反应速率相等，故说明反应速率与降冰片烯浓度无关，B 错误；",
+     "C 错：由题干图中数据可知，条件①，反应速率为\n-1\n-1\nΔc\n3.0 mol•L -0 mol•L\n=\n=\nΔt\n250 min\nu\n=\n1\n1\n0.012mol L\nmin-\n-\n×\n×\n，C\n正确；",
+     "D 错：反应物消耗一半所需的时间称为半衰期，由题干图中数据可知，条件②，降冰片烯起始浓度为\n-1\n3.0mol L\n×\n时，半衰期为125min÷2=62.5min ，D 正确；"
+    ],
+    "explanation": "正确答案是B。A．由题干图中曲线①②可知，其他条件相同时，催化剂浓度越大，反应所需要的时间更短，故反\n应速率越大，A 正确；\n第9 页 | 共24 页 \nB．由题干图中曲线①③可知，其他条件相同时，降冰片烯浓度①是③的两倍，所用时间①也是③的两倍，\n反应速率相等，故说明反应速率与降冰片烯浓度无关，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q11",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-5",
+    "multi": false,
+    "image": "real/ln2026-q11.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：根据题干结构简式可知，Ⅰ和Ⅳ的分子数均为\n3\n6\nC H O ，元素组成（C、H、O 的质量分数）完\n全相同，因此无法用元素定量分析区分，无法元素定量分析进行区分，A 错误；",
+     "B 错：从结构简式看，高分子Ⅲ的主链是线性的（两端为链节，没有交联点），属于线型高分子，而非网状交\n联结构，B 错误；",
+     "C 错：高分子Ⅲ在碱性条件下水解，酯基会断裂，生成的是二元醇和二元羧酸盐，不会直接生成环状的化合物\nⅡ（环状酯），C 错误；",
+     "D 对：反应过程中，单体Ⅱ开环，与单体I 反应生成高分子Ⅲ的同时，脱去了小分子Ⅳ（丙酮），符合缩聚反应\n的定义，可认为是缩聚反应，D 正确； \n \n \n \n \n故选D。"
+    ],
+    "explanation": "正确答案是D。A．根据题干结构简式可知，Ⅰ和Ⅳ的分子数均为\n3\n6\nC H O ，元素组成（C、H、O 的质量分数）完\n全相同，因此无法用元素定量分析区分，无法元素定量分析进行区分，A 错误； \nB．从结构简式看，高分子Ⅲ的主链是线性的（两端为链节，没有交联点），属于线型高分子，而非网状交\n联结构，B 错误；",
+    "real": true
    }
   ],
   "grade": "senior"
@@ -2880,6 +3076,346 @@ button[hidden]{display:none!important}
     "explanation": "实验开始前应先检查装置气密性，确认不漏气后再装药品。CO₂ 用向上排空气法；滴定管读数到 0.01 mL；除杂不能引入新杂质。对应第 1、2、3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q9",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2021-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：向KBr、KI 混合溶液中依次加入少量氯水和CCl4，振荡，静置，溶液分层，下层呈紫红色，\n说明反应产生I2，发生反应：2KI+Cl2=2KCl+I2，证明氧化性：Cl2＞I2，Br2＞I2，但不能比较Br2 与Cl2 的氧\n化性强弱，A 错误；",
+     "B 错：玻璃中含有Na 元素，因此灼烧时使火焰呈黄色，不能证明溶液中含Na 元素，B 错误；",
+     "C 错：应该采用对照方法进行实验，但两种溶液的浓度未知，盐的种类也不同，因此不能通过测定溶液的pH\n来判断H2CO3、CH3COOH 的酸性强弱，C 错误；",
+     "D 对：氧气有助燃性，把水滴入盛有少量Na2O2 的试管中，立即把带火星木条放在试管口，木条复燃，可以证\n明Na2O2 与水反应产生了O2，D 正确；\n故合理选项是D。"
+    ],
+    "explanation": "正确答案是D。A．向KBr、KI 混合溶液中依次加入少量氯水和CCl4，振荡，静置，溶液分层，下层呈紫红色，\n说明反应产生I2，发生反应：2KI+Cl2=2KCl+I2，证明氧化性：Cl2＞I2，Br2＞I2，但不能比较Br2 与Cl2 的氧\n化性强弱，A 错误；\nB．玻璃中含有Na 元素，因此灼烧时使火焰呈黄色，不能证明溶液中含Na 元素，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q11",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2022-q11.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：酸碱中和滴定操作中没有很好的保温措施，热量损失较多，不能用于测定中和反应的反应\n热，A 错误；",
+     "B 错：NaClO 和\n2\n3\nNa SO 反应无明显现象，无法根据现象进行浓度对化学反应速率的影响的探究，B 错误；",
+     "C 对：将\n2\n3\nNa CO 溶液与\n2\nBaCl 溶液混合，反应后静置，向上层清液中滴加1 滴\n2\n3\nNa CO 溶液，若有浑浊产\n第8 页 | 共21 页 \n生，则说明\n2\nBa + 没有沉淀完全，反之，则沉淀完全，C 正确；",
+     "D 错：检验淀粉是否发生了水解，应检验是否有淀粉的水解产物(葡萄糖)存在，可选用银氨溶液或新制氢氧化\n铜，碘水是用来检验淀粉的试剂，可用于检验淀粉是否完全水解，D 错误。\n故答案选C。\n【点睛】本题易忽略实验探究过程中，反应应具有明显的实验现象，如有气体或沉淀生成，或有明显的颜\n色变化，一般条件下会加入显色剂辅助观察实验现象"
+    ],
+    "explanation": "正确答案是C。A．酸碱中和滴定操作中没有很好的保温措施，热量损失较多，不能用于测定中和反应的反应\n热，A 错误；\nB．NaClO 和\n2\n3\nNa SO 反应无明显现象，无法根据现象进行浓度对化学反应速率的影响的探究，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q3",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2023-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：工业合成氨是利用氮气和氢气在催化剂的条件下反应生成的，反应方程式为N2+3H2 ˆ ˆ ˆ ˆ ˆ ˆ†\n‡ ˆ ˆ ˆ ˆ ˆ\n高温、高压\n催化剂\n2NH3，A 正确；",
+     "B 错：工业制氯化氢是利用氢气和氯气反应生成的，反应方程式为H2+Cl2\n点燃\n2HCl，B 正确；",
+     "C 错：工业制粗硅是将SiO2 与C 在高温下反应生成粗硅，反应方程式为SiO2+2C\n高温\nSi+2CO，C 正确；",
+     "D 对：冶炼金属镁是电解熔融氯化镁，反应方程式为MgCl2(熔融)\n电解\nMg+Cl2↑，D 错误；\n故答案选D。"
+    ],
+    "explanation": "正确答案是D。A．工业合成氨是利用氮气和氢气在催化剂的条件下反应生成的，反应方程式为N2+3H2 ˆ ˆ ˆ ˆ ˆ ˆ†\n‡ ˆ ˆ ˆ ˆ ˆ\n高温、高压\n催化剂\n2NH3，A 正确；\nB．工业制氯化氢是利用氢气和氯气反应生成的，反应方程式为H2+Cl2\n点燃\n2HCl，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q4",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2023-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：石灰水的主要成分为Ca(OH)2 能与碳酸钠和碳酸氢钠反应生成碳酸钙，二者均生成白色沉淀，\n不能达到鉴别的目的，A 错误；",
+     "B 错：Fe2+变质后会生成Fe3+，可以利用KSCN 溶液鉴别，现象为溶液变成血红色，可以达到检验的目的，B\n第3 页 | 共22 页 \n正确；",
+     "C 错：Na2SO3 被氧化后会变成Na2SO4，加入盐酸酸化的BaCl2 后可以产生白色沉淀，可以用来检验Na2SO3 是\n否被氧化，C 正确；",
+     "D 错：含有醛基的物质可以与银氨溶液反应生成银单质，可以用来检验乙醇中混油的乙醛，D 正确；\n故答案选A。"
+    ],
+    "explanation": "正确答案是A。A．石灰水的主要成分为Ca(OH)2 能与碳酸钠和碳酸氢钠反应生成碳酸钙，二者均生成白色沉淀，\n不能达到鉴别的目的，A 错误；\nB．Fe2+变质后会生成Fe3+，可以利用KSCN 溶液鉴别，现象为溶液变成血红色，可以达到检验的目的，B\n第3 页 | 共22 页 \n正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q10",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2023-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：铁、铬氧化物与碳酸钠和氧气反应时生成对应的钠盐和二氧化碳，A 正确；",
+     "B 对：焙烧过程铁元素被氧化，滤渣的主要成分为氢氧化铁，B 错误；",
+     "C 错：滤液①中Cr 元素的化合价是+6 价，铁酸钠遇水水解生成氢氧化铁沉淀溶液显碱性，所以Cr 元素主要\n存在形式为\n2\n4\nCrO - ，C 正确；",
+     "D 错：由分析知淀粉水解液中的葡萄糖起还原作用，D 正确； \n故选B。"
+    ],
+    "explanation": "正确答案是B。A．铁、铬氧化物与碳酸钠和氧气反应时生成对应的钠盐和二氧化碳，A 正确；\nB．焙烧过程铁元素被氧化，滤渣的主要成分为氢氧化铁，B 错误；\nC．滤液①中Cr 元素的化合价是+6 价，铁酸钠遇水水解生成氢氧化铁沉淀溶液显碱性，所以Cr 元素主要\n存在形式为\n2\n4\nCrO - ，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q13",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2023-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：向10mL 蒸馏水中加入0.4gI2，充分振荡，溶液呈浅棕色，说明I2 的浓度较小，因为I2 在水中\n溶解度较小，A 项正确；",
+     "B 错：已知\n-\n3I (aq)为棕色，加入0.2g 锌粒后，Zn 与I2 反应生成ZnI2，生成的I-与I2 发生反应I-+I2⇌\n-\n3I ，生成\n-\n3I\n使溶液颜色加深，B 项正确；",
+     "C 错：I2 在水中存在溶解平衡I2(s)⇌I2(aq)，Zn 与I2 反应生成\nI-与I2(aq)反应生成\n-\n3I ，I2(aq)浓度减小，上述溶\n解平衡向右移动，紫黑色晶体消失，C 项正确；",
+     "D 对：最终溶液褪色是Zn 与有色物质发生了化合反应，不是置换反应，D 项错误；\n答案选D。"
+    ],
+    "explanation": "正确答案是D。A．向10mL 蒸馏水中加入0.4gI2，充分振荡，溶液呈浅棕色，说明I2 的浓度较小，因为I2 在水中\n溶解度较小，A 项正确；\nB．已知\n-\n3I (aq)为棕色，加入0.2g 锌粒后，Zn 与I2 反应生成ZnI2，生成的I-与I2 发生反应I-+I2⇌\n-\n3I ，生成\n-\n3I\n使溶液颜色加深，B 项正确；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q3",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2024-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：H2 为易燃气体，在点燃前需验纯，A 正确；",
+     "B 对：金属K 为活泼金属，可以与水发生反应，不能用湿抹布盖灭，B 错误；",
+     "C 错：Hg 有毒，温度计打碎后应用硫粉覆盖，使Hg 转化为无毒的HgS，C 正确；",
+     "D 错：苯酚易溶于乙醇等有机物质中，苯酚沾到皮肤上后应立即用乙醇冲洗，稀释后再用水冲洗，D 正确；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．H2 为易燃气体，在点燃前需验纯，A 正确；\nB．金属K 为活泼金属，可以与水发生反应，不能用湿抹布盖灭，B 错误；\nC．Hg 有毒，温度计打碎后应用硫粉覆盖，使Hg 转化为无毒的HgS，C 正确；\nD．苯酚易溶于乙醇等有机物质中，苯酚沾到皮肤上后应立即用乙醇冲洗，稀释后再用水冲洗，D 正确；\n故答案选B。",
+    "real": true
+   },
+   {
+    "id": "ln2024-q8",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2024-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：溶液中含有Fe2+，可以与K3[Fe(CN)6]发生反应使溶液变成蓝色，A 项合理；",
+     "B 错：随着滴定的不断进行，溶液中S2-不断被消耗，但是溶液中的HS-还可以继续发生电离生成S2-，B 项不\n合理；",
+     "C 错：金属Na 既可以和水发生反应又可以和乙醇发生反应，故不能用金属Na 除去乙醇中少量的水，C 项不\n合理；",
+     "D 错：ClO-具有氧化性，不能用pH 试纸测定其pH 的大小，可以用pH 计进行测量，D 项不合理；\n故答案选A。"
+    ],
+    "explanation": "正确答案是A。A．溶液中含有Fe2+，可以与K3[Fe(CN)6]发生反应使溶液变成蓝色，A 项合理；\nB．随着滴定的不断进行，溶液中S2-不断被消耗，但是溶液中的HS-还可以继续发生电离生成S2-，B 项不\n合理；\nC．金属Na 既可以和水发生反应又可以和乙醇发生反应，故不能用金属Na 除去乙醇中少量的水，C 项不\n合理；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q10",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2024-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：由图可知，3 小时后异山梨醇浓度继续增大，15h 后异山梨醇浓度才不再变化，所以3h 时，\n反应②未达到平衡状态，即正、逆反应速率不相等，故A 错误；",
+     "B 错：图像显示该温度下，15h 后所有物质浓度都不再变化，且此时山梨醇转化完全，即反应充分，而1,4-\n失水山梨醇仍有剩余，即反应②正向进行程度小于反应①、反应限度小于反应①，所以该温度下的平衡常\n数：①>②，故B 正确；",
+     "C 错：由图可知，在0 ~ 3h 内异山梨醇的浓度变化量为0.042mol/kg，所以平均速率(异山梨醇)=\n第7 页/共23 页\n-1\n-1\n0.042\n/\n=0.014mol kg\nh\n3h\nmol kg\n×\n×\n，故C 正确；",
+     "D 错：催化剂只能改变化学反应速率，不能改变物质平衡转化率，所以反应②加入催化剂不改变其平衡转化\n率，故D 正确；"
+    ],
+    "explanation": "正确答案是A。A．由图可知，3 小时后异山梨醇浓度继续增大，15h 后异山梨醇浓度才不再变化，所以3h 时，\n反应②未达到平衡状态，即正、逆反应速率不相等，故A 错误；\nB．图像显示该温度下，15h 后所有物质浓度都不再变化，且此时山梨醇转化完全，即反应充分，而1,4-\n失水山梨醇仍有剩余，即反应②正向进行程度小于反应①、反应限度小于反应①",
+    "real": true
+   },
+   {
+    "id": "ln2025-q8",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2025-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：碱石灰为NaOH 和CaO 的混合物，既能吸收HCl 又能吸收Cl2，不能用碱石灰除去Cl2 中的\nHCl，故A 错误；",
+     "B 对：铜丝和稀硝酸反应生成硝酸铜、NO 和水，NO 难溶于水，U 形管左侧与大气隔绝，即NO 存在于无氧\n环境中，故B 正确；",
+     "C 错：S 微溶于酒精、易溶于CS2，不能用乙醇萃取CS2 中的S，故C 错误；",
+     "D 错：关闭K1、打开K2 时，该装置为电解池，锌为活性阳极，无氧气生成，阴极生成氢气，则打开K1、关闭\nK2 时，不能形成氢氧燃料电池，故D 错误；"
+    ],
+    "explanation": "正确答案是B。A．碱石灰为NaOH 和CaO 的混合物，既能吸收HCl 又能吸收Cl2，不能用碱石灰除去Cl2 中的\nHCl，故A 错误；\nB．铜丝和稀硝酸反应生成硝酸铜、NO 和水，NO 难溶于水，U 形管左侧与大气隔绝，即NO 存在于无氧\n环境中，故B 正确；\nC．S 微溶于酒精、易溶于CS2，不能用乙醇萃取CS2 中的S，故C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q2",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2026-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：NH2Cl 中心原子N 原子的价层电子对数为\n5 1 2 1\n3\n4\n2\n−−\n+\n=\n，所以其VSEPR 模型为四面体形，\n \n \n \n \nA 正确；",
+     "B 对：NH3 的共价键为N-H 键，是由不同原子构成的共价键，为极性共价键，B 错误；",
+     "C 错：N2H4 中N 的价层电子对数为\n5 1 2 1\n3\n4\n2\n−−\n+\n=\n，杂化方式为sp3 杂化，C 正确；",
+     "D 错：4\nNH+ 中氮原子与氢原子以共价键结合，其电子式为\n，D 正确； \n故选B。"
+    ],
+    "explanation": "正确答案是B。A．NH2Cl 中心原子N 原子的价层电子对数为\n5 1 2 1\n3\n4\n2\n−−\n+\n=\n，所以其VSEPR 模型为四面体形，\n \n \n \n \nA 正确； \nB．NH3 的共价键为N-H 键，是由不同原子构成的共价键，为极性共价键，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q4",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2026-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：氯气的密度大于空气，使用向上排空气法收集，氯气与CaCl2不反应，不能用CaCl2吸收尾气，\n需用NaOH 溶液吸收，A 方案不合理；",
+     "B 错：电石与水反应生成乙炔，该反应剧烈，采用饱和NaCl 溶液可减缓电石与水的反应速度，B 方案合理；",
+     "C 错：亚硫酸的酸性比碳酸强，SO2通入到饱和NaHCO3溶液可发生反应生成Na2SO3和CO2，能除去CO2中\n的SO2，C 方案合理；",
+     "D 错：实验室铜件镀镍，铜制镀件接电源负极作阴极，镍接电源正极作阳极，电解液中含Ni2+，D 方案合理； \n故选A。"
+    ],
+    "explanation": "正确答案是A。A．氯气的密度大于空气，使用向上排空气法收集，氯气与CaCl2不反应，不能用CaCl2吸收尾气，\n需用NaOH 溶液吸收，A 方案不合理； \nB．电石与水反应生成乙炔，该反应剧烈，采用饱和NaCl 溶液可减缓电石与水的反应速度，B 方案合理；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q7",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-6",
+    "multi": false,
+    "image": "real/ln2026-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：Ga 位于元素周期表第四周期第ⅢA 族，电子排布式为\n2\n2\n6\n2\n6\n10\n2\n1\n1s 2s 2p 3s 3p 3d 4s 4p ，简化后的\n电子排布式为\n10\n2\n1\n[Ar]3d 4s 4p ，A 错误；",
+     "B 错：由于蓝宝石砧座的硬度高，符合共价晶体的性质特征，故其主要成分\n2\n3\nAl O 可当作共价晶体，B 正确；",
+     "C 错：由图知，由Ga(3D) 制作Ga(2D) 的过程需要加热熔化并挤压，该过程为吸热过程，故等物质的量的\nGa(2D) 能量高于Ga(3D) 晶体，C 正确；",
+     "D 错：由大面积单原子层二维金属Ga(2D) 俯视放大图可知，Ga(2D) 为密排的二维结构，则一个基本结构单\n元为\n，D 正确； \n故选A。"
+    ],
+    "explanation": "正确答案是A。A．Ga 位于元素周期表第四周期第ⅢA 族，电子排布式为\n2\n2\n6\n2\n6\n10\n2\n1\n1s 2s 2p 3s 3p 3d 4s 4p ，简化后的\n电子排布式为\n10\n2\n1\n[Ar]3d 4s 4p ，A 错误； \nB．由于蓝宝石砧座的硬度高，符合共价晶体的性质特征，故其主要成分\n2\n3\nAl O 可当作共价晶体，B 正确；",
+    "real": true
+   }
+  ],
   "grade": "senior"
  },
  {
@@ -3040,6 +3576,1126 @@ button[hidden]{display:none!important}
     "explanation": "提高原子利用率可使反应物更多转化为目标产物，减少副产物和污染。温度、pH 都要控制在合适范围；尾气必须处理，不能直接排放。对应第 2、3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q1",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：由于生铁发生电化学腐蚀，而纯铁只能发生化学腐蚀，故生铁比纯铁易生锈，A 错误；",
+     "B 错：臭氧具有强氧化性，能使蛋白质发生变性，可用于自来水消毒，B 正确；",
+     "C 错：酚醛树脂具有空间立体网状结构，具有热固体，绝缘性，故可用作绝缘、隔热材料，C 正确；",
+     "D 错：高纯硅是良好的半导体材料，可用于制芯片，D 正确；"
+    ],
+    "explanation": "正确答案是A。A．由于生铁发生电化学腐蚀，而纯铁只能发生化学腐蚀，故生铁比纯铁易生锈，A 错误；\nB．臭氧具有强氧化性，能使蛋白质发生变性，可用于自来水消毒，B 正确；\nC．酚醛树脂具有空间立体网状结构，具有热固体，绝缘性，故可用作绝缘、隔热材料，C 正确；\nD．高纯硅是良好的半导体材料，可用于制芯片，D 正确；\n故答案为：A。",
+    "real": true
+   },
+   {
+    "id": "ln2021-q2",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：基态C 原子价电子排布图为：\n，A 错误；",
+     "B 错：-\nCl 结构示意图为：\n，B 错误；",
+     "C 错：KCl 形成过程为：\n，C 错误；",
+     "D 对：质量数为2 的氢核素为：2\n1 H ，D 正确；"
+    ],
+    "explanation": "正确答案是D。A．基态C 原子价电子排布图为：\n，A 错误；\nB．\n-\nCl 结构示意图为：\n，B 错误；\nC．KCl 形成过程为：\n，C 错误；\nD．质量数为2 的氢核素为：2\n1 H ，D 正确；\n故答案为：D。",
+    "real": true
+   },
+   {
+    "id": "ln2021-q3",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由题干可知，“乌金纸”是用豆油点灯，闭塞周围，只留针孔通气，熏染烟光而成此纸，故“乌\n金纸”的“乌”与豆油不完全燃烧有关，A 正确；",
+     "B 错：造纸的原料主要是纤维素，故“巨竹膜”为造纸的原料，主要成分是纤维素，B 正确；",
+     "C 对：豆油的主要成分油脂，但不属于高分子化合物，豆油不属于天然高分子化合物，C 错误；",
+     "D 错：打金成箔，说明金具有良好的延展性，D 正确；"
+    ],
+    "explanation": "正确答案是C。A．由题干可知，“乌金纸”是用豆油点灯，闭塞周围，只留针孔通气，熏染烟光而成此纸，故“乌\n金纸”的“乌”与豆油不完全燃烧有关，A 正确；\nB．造纸的原料主要是纤维素，故“巨竹膜”为造纸的原料，主要成分是纤维素，B 正确；\nC．豆油的主要成分油脂，但不属于高分子化合物，豆油不属于天然高分子化合物，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q4",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：由于溶于水中的Cl2 只有部分与H2O 反应，故\n2\n22.4LCl (标准状况)与水充分反应转移电子数目\n小于1mol ，A 错误；",
+     "B 对：根据反应：SO3+H2O=H2SO4，Cu+Cl2 点燃CuCl2，故\n2\n4\nH SO 和\n2\nCuCl 均可通过化合反应得到，B 正确；",
+     "C 错：将蘸有浓氨水和浓盐酸或浓硝酸的玻璃棒相互靠近，有白烟产生，由于浓硫酸难挥发，故不能形成白烟，\nC 错误；",
+     "D 错：由于ClO-具有强氧化性，SO2 具有强还原性，故\n2\nSO 与KClO 溶液反应：\n-\n+\n-\n2-\n2\n2\n4\nSO +ClO +H O=2H +Cl +SO\n，D 错误；"
+    ],
+    "explanation": "正确答案是B。A．由于溶于水中的Cl2 只有部分与H2O 反应，故\n2\n22.4LCl (标准状况)与水充分反应转移电子数目\n小于1mol ，A 错误；\nB．根据反应：SO3+H2O=H2SO4，Cu+Cl2 点燃CuCl2，故\n2\n4\nH SO 和\n2\nCuCl 均可通过化合反应得到，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q6",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：该分子中存在2 个苯环、碳碳双键所在的三个平面，平面间单键连接可以旋转，故所有碳原子\n可能共平面，A 错误；",
+     "B 对：由题干信息可知，该分子中有羟基，能与蛋白质分子中\n氨基之间形成氢键，B 正确；",
+     "C 错：由题干信息可知，1mol 该物质含有2mol 酚羟基，可以消耗2molNaOH，1mol 酚酯基，可以消耗\n2molNaOH，故最多能与4molNaOH 反应，C 错误；",
+     "D 错：该物质中含有酚羟基且邻对位上有H，能发生取代反应，含有苯环和碳碳双键，能发生加成反应，但没\n有卤素原子和醇羟基，不能发生消去反应，D 错误；"
+    ],
+    "explanation": "正确答案是B。A．该分子中存在2 个苯环、碳碳双键所在的三个平面，平面间单键连接可以旋转，故所有碳原子\n可能共平面，A 错误； \nB．由题干信息可知，该分子中有羟基，能与蛋白质分子中\n氨基之间形成氢键，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q8",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，盐a 为Na2SO3 或者NaHSO3，也可能是Na2S2O3，故a 可能为正盐，也可能为酸\n式盐，A 正确；",
+     "B 错：由分析可知，c 为BaSO4，故c 为不溶于盐酸的白色沉淀，B 正确；",
+     "C 对：由分析可知，d 为SO2，由SO2 易溶于水并根据“相似相溶”原理可知，d 是含有极性键的极性分子，C 错\n误；",
+     "D 错：由分析可知，盐a 为Na2SO3 或者NaHSO3，也可能\nNa2S2O3，当\n是\n第6 页 | 共24 页 \nNa2S2O3+2HCl=2NaCl+S↓+SO2↑+H2O，反应②中还可能生成淡黄色沉淀，D 正确；"
+    ],
+    "explanation": "正确答案是C。A．由分析可知，盐a 为Na2SO3 或者NaHSO3，也可能是Na2S2O3，故a 可能为正盐，也可能为酸\n式盐，A 正确；\nB．由分析可知，c 为BaSO4，故c 为不溶于盐酸的白色沉淀，B 正确；\nC．由分析可知，d 为SO2，由SO2 易溶于水并根据“相似相溶”原理可知，d 是含有极性键的极性分子，C 错\n误；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q13",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，a 为电源负极，A 正确；",
+     "B 错：由分析可知，根据电子守恒可知，溶液中Q 的物质的量保持不变，B 正确；",
+     "C 对：由分析可知，整个过程CO2 未被还原，\n2\nCO 在M 极发生反应为CO2+OH-=\n-\n3\nHCO ，C 错误；",
+     "D 错：由题干信息可知，M 极上CO2 发生反应为：CO2+OH-=\n-\n3\nHCO 被吸收，\n-\n3\nHCO 向阳极移动，N 极上发生\n的反应为：\n-\n3\nHCO +H+=H2O+CO2↑，故分离出的\n2\nCO 从出口2 排出，D 正确；"
+    ],
+    "explanation": "正确答案是C。A．由分析可知，a 为电源负极，A 正确；\nB．由分析可知，根据电子守恒可知，溶液中Q 的物质的量保持不变，B 正确；\nC．由分析可知，整个过程CO2 未被还原，\n2\nCO 在M 极发生反应为CO2+OH-=\n-\n3\nHCO ，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q14",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q14.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，X、Y 的氢化物分别为：CH4 和NH3，由于NH3 存在分子间氢键，故氢化物沸点：\nX\nY\n＜\n，A 错误；",
+     "B 错：根据同一周期从左往右主族元素的原子半径依次减小，同一主族从上往下依次增大，故原子半径：\nM<Z<Y<X ，B 错误；",
+     "C 错：根据同一周期从左往右元素的第一电离能呈增大趋势，IIA 与IIIA，VA 与VIA 反常，故第一电离能：\nW<X<Z<Y，C 错误；",
+     "D 对：由于阳离子中\nY 原子是N 原子，形成了类似于铵根离子的阳离子，故存在配位键，阴离子中的W 为\nB，最外层上只有3 个电子，能形成3 个共价键，现在形成了4 个共价键，故还有一个配位键，D 正确；"
+    ],
+    "explanation": "正确答案是D。A．由分析可知，X、Y 的氢化物分别为：CH4 和NH3，由于NH3 存在分子间氢键，故氢化物沸点：\nX\nY\n＜\n，A 错误；\nB．根据同一周期从左往右主族元素的原子半径依次减小，同一主族从上往下依次增大，故原子半径：\nM<Z<Y<X ，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q15",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2021-q15.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：采用适宜的滴液速度",
+     "B 错：用盐酸代替KOH 溶液，抑制\n2+\nFe\n水解",
+     "C 对：在空气氛围中制备",
+     "D 错：选择适宜的焙烧温度\n（5）步骤④中判断沉淀是否已经用水洗涤干净，应选择的试剂为_______；使用乙醇洗涤的目的是\n_______。\n（6）该实验所得磁性材料的产率为_______(保留3 位有效数字)。"
+    ],
+    "explanation": "正确答案是C。A．\n2\nH A 的\n\n\n\n\n\n\n2\na1\nc\nc\nH\nHA\nK\nA\nc H\n+\n-\n×\n=\n，根据上图交点1 计算可知\na1\nK\n=10-6.38，A 错误；\n第12 页 | 共24 页 \nB．根据图像可知c 点中\n\n\n\n\n\n-\n2-\n2\nc HA\n>c H A >c A\n，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q1",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：花岗岩的主要成分是石英、云母、长石等矿物，属于无机非金属材料，A 正确；",
+     "B 对：碳纤维指的是含碳量在90%以上的高强度高模量纤维，属于无机非金属材料，B 错误；",
+     "C 错：金属奖牌属于合金材料，C 正确；",
+     "D 错：聚乙烯属于有机高分子材料，D 正确；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．花岗岩的主要成分是石英、云母、长石等矿物，属于无机非金属材料，A 正确；\nB．碳纤维指的是含碳量在90%以上的高强度高模量纤维，属于无机非金属材料，B 错误；\nC．金属奖牌属于合金材料，C 正确；\nD．聚乙烯属于有机高分子材料，D 正确；\n故答案选B。",
+    "real": true
+   },
+   {
+    "id": "ln2022-q2",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：2\nH S 是二元弱酸，电离分步进行，其一级电离方程式为\n2\nH S\nH\nHS\n+\n-\n+\nˆˆ†\n‡ˆˆ\n，A 错误；",
+     "B 错：基态Na 原子的价电子排布式是\n1\n3s ，最后一个电子填充在s 能级，位于元素周期表s 区，B 错误；",
+     "C 对：2\n3\nCO\n- 中心碳原子的价层电子对数为\n1\n3\n( 4\n2\n3\n2)\n3\n2\n+\n´\n+\n-\n´\n=\n，故其空间结构为平面三角形，C\n正确；\n第2 页 | 共21 页",
+     "D 错：KOH 是离子化合物，电子式为\n··\n··\nK [:O : H]\n+\n- ，D 错误；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．\n2\nH S 是二元弱酸，电离分步进行，其一级电离方程式为\n2\nH S\nH\nHS\n+\n-\n+\nˆˆ†\n‡ˆˆ\n，A 错误；\nB．基态Na 原子的价电子排布式是\n1\n3s ，最后一个电子填充在s 能级，位于元素周期表s 区，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q3",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：1 个18O 原子中含有10 个中子，\n18\n1.8g O 的物质的量为\n1\n1.8g\n0.1mol\n18g mol- =\n×\n，故\n18\n1.8g O 中\n含有中子的物质的量为1mol ，中子数为\nA\nN ，故A 正确；",
+     "B 错：乙烯分子的结构式为\n，1 个乙烯分子中含有5 个s 键， \n2\n4\n28g C H 的物质的量为\n1mol ，所以\n2\n4\n28g C H 分子中含有的s 键数目为\nA\n5N ，B 错误；",
+     "C 错：HCl 是共价化合物，HCl 分子中不存在H+，故C 错误；",
+     "D 错：没有给出\n2\n3\nNa CO 溶液的体积，无法计算pH\n12\n=\n的\n2\n3\nNa CO 溶液中O H - 的数目，故D 错误；\n选A。"
+    ],
+    "explanation": "正确答案是A。A．1 个18O 原子中含有10 个中子，\n18\n1.8g O 的物质的量为\n1\n1.8g\n0.1mol\n18g mol- =\n×\n，故\n18\n1.8g O 中\n含有中子的物质的量为1mol ，中子数为\nA\nN ，故A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q5",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：X 为C，能与多种元素(H、O、N、P、S 等)形成共价键，A 正确；",
+     "B 对：Z 和Q 形成的简单氢化物为H2O 和H2S，由于H2O 分子间能形成氢键，故H2O 沸点高于H2S，B 错\n误；",
+     "C 错：Y 为N，Z 为O，N 的最外层p 轨道电子为半充满结构，比较稳定，故其第一电离能比O 大，C 正\n确；",
+     "D 错：W 为Al，Z 为O，O 的电负性更大，D 正确；\n故选B。"
+    ],
+    "explanation": "正确答案是B。A．X 为C，能与多种元素(H、O、N、P、S 等)形成共价键，A 正确；\nB．Z 和Q 形成的简单氢化物为H2O 和H2S，由于H2O 分子间能形成氢键，故H2O 沸点高于H2S，B 错\n误；\nC．Y 为N，Z 为O，N 的最外层p 轨道电子为半充满结构，比较稳定，故其第一电离能比O 大，C 正\n确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q6",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：Zn 比Fe 活泼，更容易失去电子，还原性更强，先与\n2I 发生氧化还原反应，故溶液褪色原因\n为\n2I 被Zn 还原，A 项错误；",
+     "B 错：液体分层后，\n2I 在\n4\nCCl 层，\n4\nCCl 的密度比水大，则下层呈紫红色，B 项错误；",
+     "C 错：若镀层金属活泼性大于Fe ，则Fe 不易生锈，反之，若Fe 活泼性大于镀层金属，则Fe 更易生锈，由于\n活泼性：Zn>Fe>Sn ，则镀锡铁钉更易生锈，C 项错误；",
+     "D 对：漂白粉的有效成分为\n2\nCa(ClO) ，其具有强氧化性，可将\n-I 氧化，D 项正确；\n答案选D。"
+    ],
+    "explanation": "正确答案是D。A．Zn 比Fe 活泼，更容易失去电子，还原性更强，先与\n2I 发生氧化还原反应，故溶液褪色原因\n为\n2I 被Zn 还原，A 项错误；\nB．液体分层后，\n2I 在\n4\nCCl 层，\n4\nCCl 的密度比水大，则下层呈紫红色，B 项错误；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q7",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：2\nCl 、\n2\nBr 、\n2I 的相对分子质量逐渐增大，沸点逐渐升高，可推知分子晶体的相对分子质量\n越大，分子间作用力越大，沸点越高，由于相对分子质量：\n2\n2\n2\nH\nN\nO\n<\n<\n，所以沸点：\n2\n2\n2\nH\nN\nO\n<\n<\n，\n故A 正确；",
+     "B 错：非金属元素最高价含氧酸的酸性与非金属性有关，元素的非金属性越强，最高价含氧酸的酸性越强，\n所以酸性：\n4\n4\n>\nHClO\nHIO ，酸性：HCl\nHI\n<\n，故B 错误；",
+     "C 错：由金属性：Fe>Cu ，可推出氧化性\n2+\n2+\nFe <Cu\n；由离子方程式\n3+\n2+\n2+\n2Fe +Cu=2Fe +Cu\n可得，氧化\n性：\n3+\n2+\nFe >Cu\n，故C 错误；\n第5 页 | 共21 页",
+     "D 错：2\n4\nAg CrO 和AgCl 的阴、阳离子个数比不相同，不能通过\nsp\nK\n大小来比较二者在水中的溶解度，故D\n错误；\n选A。"
+    ],
+    "explanation": "正确答案是A。A．\n2\nCl 、\n2\nBr 、\n2I 的相对分子质量逐渐增大，沸点逐渐升高，可推知分子晶体的相对分子质量\n越大，分子间作用力越大，沸点越高，由于相对分子质量：\n2\n2\n2\nH\nN\nO\n<\n<\n，所以沸点：\n2\n2\n2\nH\nN\nO\n<\n<\n，\n故A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q9",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据题目信息可知，\n3\n2\nCH CH Br 和\n2\nH O 互相交换成分生成\n3\n2\nCH CH OH 和HBr 。由\n-\n2\n3\n+\n2H O(l)\nOH +H O\nˆˆ†\n‡ˆˆ\n可得，\n3\n2\nMg N 与\n2\nH O 互相交换成分生成\n2\nMg(OH) 和\n3\nNH ，与题述反应原理\n相同，A 正确；\n第6 页 | 共21 页",
+     "B 错：由于\n3\nNH (l) 可自电离，\n3\n2NH 可写为\nδ +\nδ -\n4\n2\nNH - NH ，\nδ +\nδ -\n4\n2\nNH - NH 与\n4\nSiCl 交换成分生成\n\n\n2\n4\nSi NH\n和\n4\n3\nNH Cl 与题述反应原理相同，故B 正确；",
+     "C 对：2\nCl 与\n3\nNH 反应生成了单质\n2\nN ，反应物没有互相交换成分，与题述反应原理不同，故C 错误；",
+     "D 错：δ +\nδ -\nH -OH 和\n3\nPCl 互相交换成分生成了\n3\n3\nH PO 和HCl ，与题述反应原理相同，故D 正确；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．根据题目信息可知，\n3\n2\nCH CH Br 和\n2\nH O 互相交换成分生成\n3\n2\nCH CH OH 和HBr 。由\n-\n2\n3\n+\n2H O(l)\nOH +H O\nˆˆ†\n‡ˆˆ\n可得，\n3\n2\nMg N 与\n2\nH O 互相交换成分生成\n2\nMg(OH) 和\n3\nNH ，与题述反应原理\n相同，A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q10",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：反应开始一段时间，随着时间的延长，反应物浓度逐渐减小，产物Z 的平均生成速率逐渐减\n小，则0\n1min\n:\n内Z 的平均生成速率大于0\n2min\n~\n内的，故1min 时，Z 的浓度大于\n1\n0.20mol L-\n×\n，A 正\n确；",
+     "B 对：4min 时生成的Z 的物质的量为\n1\n1\n0.15mol L\nmin\n4min 1L\n0.6mol\n-\n-\n×\n×\n´\n´\n=\n，6min 时生成的Z 的物质\n的量为\n1\n1\n0.10mol L\nmin\n6min 1L\n0.6mol\n-\n-\n×\n×\n´\n´\n=\n，故反应在4min 时已达到平衡，设达到平衡时生了\na mol Y ",
+     "C 错：反应生成的Y 与Z 的物质的量之比恒等于1∶2，反应体系中只有Y 和Z 为气体，相同条件下，体积之\n比等于物质的量之比，V(Y)\n1\nV(Z)\n2\n=\n，故Y 的体积分数始终约为33.3%，C 正确；",
+     "D 错：由B 项分析可知5min 时反应处于平衡状态，此时生成Z 为0.6mol ，则X 的转化量为0.6mol ，初始\nX 的物质的量为2mol，剩余X 的物质的量为1.4mol ，D 正确；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．反应开始一段时间，随着时间的延长，反应物浓度逐渐减小，产物Z 的平均生成速率逐渐减\n小，则0\n1min\n:\n内Z 的平均生成速率大于0\n2min\n~\n内的，故1min 时，Z 的浓度大于\n1\n0.20mol L-\n×\n，A 正\n确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q13",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2022-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：2\n2\nNH CH COOH 中存在\n2\n-NH 和-COOH，所以溶液既有酸性又有碱性，故A 正确；",
+     "B 错：氨基具有碱性，在酸性较强时会结合氢离子，羧基具有酸性，在碱性较强时与氢氧根离子反应，故曲\n线a 表示 \n+\n3\n2\nNH CH COOH 的分布分数随溶液pH 的变化，曲b 表示\n+\n-\n3\n2\nNH CH COO 的分布分数随溶液pH 的变化，曲线c 表示\n-\n2\n2\nNH CH COO 的分布分数随溶液pH 的变\n化，故B 正确；",
+     "C 错：+\n-\n+\n-\n3\n2\n2\n3\n2\nNH CH COO +H O\nNH CH COOH+OH\nˆˆ†\n‡ˆˆ\n的平衡常数\n\n\n\n\n\n\n+\n-\n3\n2\n+\n-\n3\n2\nc NH CH COOH\nc OH\nK=\nc NH CH COO\n×\n，\n25℃时，根据a，b 曲线交点坐标(2.35 0.50)\n，\n可知，pH=2.35 时",
+     "D 对：由C 项分析可知，\n\n\n\n\n\n+\n-11.65\n3\n2\n+\n-\n-\n3\n2\nc NH CH COOH\n10\n=\nc NH CH COO\nc OH\n，根据b，c 曲线交点坐标坐标(9.78 0.50)\n"
+    ],
+    "explanation": "正确答案是D。A．\n2\n2\nNH CH COOH 中存在\n2\n-NH 和-COOH，所以溶液既有酸性又有碱性，故A 正确；\nB．氨基具有碱性，在酸性较强时会结合氢离子，羧基具有酸性，在碱性较强时与氢氧根离子反应，故曲\n线a 表示 \n+\n3\n2\nNH CH COOH 的分布分数随溶液pH 的变化",
+    "real": true
+   },
+   {
+    "id": "ln2023-q1",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2023-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：常见的脂肪酸有：硬脂酸(C17H35COOH)、油酸(C17H33COOH)，二者相对分子质量虽大，但没\n有达到高分子化合物的范畴，不属于有机高分子，A 错误；",
+     "B 错：嫦娥石因其含有Y、Ca、Fe 等元素，属于无机化合物，又因含有磷酸根，是无机盐，B 正确；",
+     "C 错：电池是一种可以将其他能量转化为电能的装置，钙钛矿太阳能电池可以将太阳能转化为电能，C 正确；",
+     "D 错：海水中含有大量的无机盐成分，可以将大多数物质腐蚀，而聚四氟乙烯塑料被称为塑料王，耐酸、耐碱，\n不会被含水腐蚀，D 正确；\n故答案选A。"
+    ],
+    "explanation": "正确答案是A。A．常见的脂肪酸有：硬脂酸(C17H35COOH)、油酸(C17H33COOH)，二者相对分子质量虽大，但没\n有达到高分子化合物的范畴，不属于有机高分子，A 错误；\nB．嫦娥石因其含有Y、Ca、Fe 等元素，属于无机化合物，又因含有磷酸根，是无机盐，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q5",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2023-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：2\nCO 分子含有2 个￿￿键，题中没有说是标况条件下，气体摩尔体积未知，无法计算￿￿键个\n数，A 项错误；",
+     "B 错：2.8g\n2\nN 的物质的量\nm\n2.8\nn=\nmol\n0.1mol\nM\n28\n=\n=\n，1mol\n2\nN 生成转移的电子数为12\nA\nN ，则0.1mol\n2\nN 转\n移的电子数为1.2\nA\nN ，B 项错误；",
+     "C 对：0.1mol\n3\nKNO 晶体含有离子为\n+\nK 、\n-\n3\nNO ，含有离子数目为0.2\nA\nN ，C 项正确；",
+     "D 错：因为\n2-\nS 水解使溶液中\n2-\nS 的数目小于0.1\nA\nN ，D 项错误；\n答案选C。"
+    ],
+    "explanation": "正确答案是C。A．\n2\nCO 分子含有2 个￿￿键，题中没有说是标况条件下，气体摩尔体积未知，无法计算￿￿键个\n数，A 项错误；\nB．2.8g\n2\nN 的物质的量\nm\n2.8\nn=\nmol\n0.1mol\nM\n28\n=\n=\n，1mol\n2\nN 生成转移的电子数为12\nA\nN ，则0.1mol\n2\nN 转\n移的电子数为1.2\nA\nN ，B 项错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q6",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2023-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：手性是碳原子上连有四个不同的原子或原子团，因此闭环螺吡喃含有手性碳原子如图所示，\n第4 页 | 共22 页 \n，开环螺吡喃不含手性碳原子，故A 错误；",
+     "B 对：根据它们的结构简式，分子式均为C19H19NO，它们结构不同，因此互为同分异构体，故B 正确；",
+     "C 错：闭环螺吡喃中N 原子杂化方式为sp3，开环螺吡喃中N 原子杂化方式为sp2，故C 错误；",
+     "D 错：开环螺吡喃中氧原子显负价，电子云密度大，容易与水分子形成分子间氢键，水溶性增大，因此开环\n螺吡喃亲水性更好，故D 错误；\n答案\nB。"
+    ],
+    "explanation": "正确答案是B。A．手性是碳原子上连有四个不同的原子或原子团，因此闭环螺吡喃含有手性碳原子如图所示，\n第4 页 | 共22 页 \n，开环螺吡喃不含手性碳原子，故A 错误；\nB．根据它们的结构简式，分子式均为C19H19NO，它们结构不同，因此互为同分异构体，故B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q12",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2023-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由图像可知，随着时间的推移Mn(III)的浓度先增大后减小，说明开始反应生成Mn(III)，后\nMn(III)被消耗生成Mn(II)，Mn(III)能氧化H2C2O4，A 项错误；",
+     "B 错：随着反应物浓度的减小，到大约13min 时开始生成Mn(II)，Mn(II)对反应起催化作用，13min 后反应速\n率会增大，B 项错误；",
+     "C 对：由图像可知，Mn(VII)的浓度为0 后才开始生成Mn(II)，该条件下Mn(II)和Mn(VII)不能大量共存，C 项\n正确；",
+     "D 错：H2C2O4为弱酸，在离子方程式中应以化学式保留，总反应为2\n-\n4\nMnO +5H2C2O4+6H+=2Mn2++10CO2↑+8H2O，\nD 项错误；\n答案选C。"
+    ],
+    "explanation": "正确答案是C。A．由图像可知，随着时间的推移Mn(III)的浓度先增大后减小，说明开始反应生成Mn(III)，后\nMn(III)被消耗生成Mn(II)，Mn(III)能氧化H2C2O4，A 项错误；\nB．随着反应物浓度的减小，到大约13min 时开始生成Mn(II)，Mn(II)对反应起催化作用，13min 后反应速\n率会增大，B 项错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q15",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2023-q15.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，曲线①代表Cd2+、③代表S2-，由图示曲线①③交点可知，此时\nc(Cd2+)=c(S2-)=10-13mol/L，则有\n\n\n\n\n\n2\n2\n-13\n-13\n26\nsp\nK\nCdS\nc\nc S\n10\n10\n=10\nCd +\n-\n-\n=\n=\n´\n，A 错误； \n第11 页 | 共22 页",
+     "B 错：由分析可知，③为pH 与\n\n\n2\nlgc S -\n-\n的关系曲线，B 错误；",
+     "C 错：由分析可知，曲线④代表HS-，由图示曲线④两点坐标可知，此时c(H+)=10-1.6mol/L 时，c(HS-)=10-\n6.5mol/L，\n\n\n\n\n\n\n\n1.6\n6.5\n7.1\na1\n2\n2\nc H\n10\n10\nK\nH S\n10\nH S\n0.1\nc",
+     "D 对：已知Ka1Ka2=\n+\n-\n+\n2-\n-\n2\nc(H )c(HS )\nc(H )c(S )\n×\nc(H S)\nc(HS )\n=\n+\n2-\n2\n2c (H )c(S )\nc(H S)\n，由曲线③两点坐标可知，当c(H+)=10-4.9mol/L\n时，c(S2-)=10-13mol/L，或者当c(H+)=10-6.8mol/L 时"
+    ],
+    "explanation": "正确答案是D。A．由分析可知，曲线①代表Cd2+、③代表S2-，由图示曲线①③交点可知，此时\nc(Cd2+)=c(S2-)=10-13mol/L，则有\n\n\n\n\n\n2\n2\n-13\n-13\n26\nsp\nK\nCdS\nc\nc S\n10\n10\n=10\nCd +\n-\n-\n=\n=\n´\n，A 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q1",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：金代六曲葵花鎏金银盏是合金，属于无机金属材料；",
+     "B 错：北燕鸭形玻璃注是玻璃制品，属于硅酸盐材料；",
+     "C 错：汉代白玉耳环是玉，属于含有微量元素的钙镁硅酸盐材料；",
+     "D 错：新石器时代彩绘几何纹双腹陶罐是陶器，属于硅酸盐材料；\n综上A 选项材质与其他三项材质不用，不能归为一类，答案选A。"
+    ],
+    "explanation": "正确答案是A。A．金代六曲葵花鎏金银盏是合金，属于无机金属材料；\nB．北燕鸭形玻璃注是玻璃制品，属于硅酸盐材料；\nC．汉代白玉耳环是玉，属于含有微量元素的钙镁硅酸盐材料；\nD．新石器时代彩绘几何纹双腹陶罐是陶器，属于硅酸盐材料；\n综上A 选项材质与其他三项材质不用，不能归为一类，答案选A。",
+    "real": true
+   },
+   {
+    "id": "ln2024-q4",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：标况下SO2 为气体，11.2L SO2 为0.5mol，其含有1.5mol 原子，原子数为1.5NA，A 错误；",
+     "B 错：SO\n2\n3\n- 为弱酸阴离子，其在水中易发生水解，因此，100mL 0.1mol L-1 Na2SO3 溶液中SO\n2\n3\n- 数目小于\n为\n第3 页/共23 页\n0.01NA，B 错误；",
+     "C 错：反应①的方程式为SO2+2H2S=3S¯ +2H2O，反应中每生成3mol S 消耗2mol H2S，3.4g H2S 为0.1mol，\n故可以生成0.15mol S，生成的原子数目为0.15NA，C 错误；",
+     "D 对：反应②的离子方程式为3S+6OH-=SO\n2\n3\n- +2S2-+3H2O，反应的还原产物为S2-，每生成2mol S2-共转移4mol\n电子，因此，每生成1mol S2-，转移2mol 电子，数目为2NA，D 正确；\n故答案选D。"
+    ],
+    "explanation": "正确答案是D。A．标况下SO2 为气体，11.2L SO2 为0.5mol，其含有1.5mol 原子，原子数为1.5NA，A 错误；\nB．SO\n2\n3\n- 为弱酸阴离子，其在水中易发生水解，因此，100mL 0.1mol L-1 Na2SO3 溶液中SO\n2\n3\n- 数目小于\n为\n第3 页/共23 页\n0.01NA，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q5",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：过碳酸钠中过碳酸根中有两个O 原子为-1 价，易得到电子变成-2 价O，因此过碳酸钠具有强\n氧化性，可以漂白衣物，A 正确；",
+     "B 对：酒曲上大量微生物，微生物可以分泌多种酶将化谷物中的淀粉、蛋白质等转变成糖、氨基酸。糖分在酵\n母菌的酶的作用下，分解成乙醇，即酒精。因此，米饭需晾凉，米饭过热会使微生物失活，B 错误；",
+     "C 错：柠檬酸的酸性强于碳酸，可以将水垢中的碳酸钙分解为可溶性的钙离子，用于除水垢，C 正确；",
+     "D 错：油脂可以在碱性条件下水解成可用于水的甘油和脂肪酸盐，用于清洗油污，D 正确；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．过碳酸钠中过碳酸根中有两个O 原子为-1 价，易得到电子变成-2 价O，因此过碳酸钠具有强\n氧化性，可以漂白衣物，A 正确；\nB．酒曲上大量微生物，微生物可以分泌多种酶将化谷物中的淀粉、蛋白质等转变成糖、氨基酸。糖分在酵\n母菌的酶的作用下，分解成乙醇，即酒精。",
+    "real": true
+   },
+   {
+    "id": "ln2024-q6",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据分析，溶液由无色变为蓝色说明有I2 生成，A 正确；",
+     "B 错：根据分析，溶液由蓝色变为无色，是将I2 转化为IO 3\n- ，I2 转化为为化合态，B 正确；",
+     "C 对：根据分析，H2O2 在此过程中参加反应，不起到漂白作用，C 错误；",
+     "D 错：在此过程中，因为有I2 的生成与消耗，淀粉在这个过程中起到指示剂的作用，D 正确；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．根据分析，溶液由无色变为蓝色说明有I2 生成，A 正确；\nB．根据分析，溶液由蓝色变为无色，是将I2 转化为IO 3\n- ，I2 转化为为化合态，B 正确；\nC．根据分析，H2O2 在此过程中参加反应，不起到漂白作用，C 错误；\nD．在此过程中，因为有I2 的生成与消耗，淀粉在这个过程中起到指示剂的作用，D 正确；\n故答案选C。",
+    "real": true
+   },
+   {
+    "id": "ln2024-q11",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q11.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：W、Y、Z 分别为H、O、S，S 单质常温下呈固态，其沸点高于氧气和氢气，O2 和H2 均为分\n子晶体，O2 的相对分子质量大于H2，O2 的范德华力大于 H2，所以沸点O2＞H2，即沸点S＞O2＞H2，故\nA 正确；",
+     "B 错：Y、X 的 简单氢化物分别为H2O 和NH3，H2O 的中心原子O 原子的价层电子对数为2+ 1\n2\n×(6-\n2×1)=4、孤电子对数为2，空间构型为V 形，键角约105º，NH3 的中心原子N 原子的价层电子对数为3+\n1\n2\n×(5-3×1)=4、孤电子对数为1，空间构型为三角锥形，键角约107º18´，所以键角：X\nY\n>\n",
+     "C 错：硫酸铜溶液中滴加氨水，氨水不足时生成蓝色沉淀氢氧化铜，氨水过量时氢氧化铜溶解，生成\nCu(NH3)4SO4，即反应过程中有蓝色沉淀产生，故C 正确；\n第8 页/共23 页",
+     "D 对：4\n4\n12\nQZX Y W 为Cu(NH3)4SO4，其中铜离子提供空轨道、NH3 的N 原子提供孤电子对，两者形成配位\n键，配位原子为N，故D 错误；"
+    ],
+    "explanation": "正确答案是D。A．W、Y、Z 分别为H、O、S，S 单质常温下呈固态，其沸点高于氧气和氢气，O2 和H2 均为分\n子晶体，O2 的相对分子质量大于H2，O2 的范德华力大于 H2，所以沸点O2＞H2，即沸点S＞O2＞H2，故\nA 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q13",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2024-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由分析得，“浸铜”时，铜屑不能溶解完全，Cu 在“脱氯”步骤还需要充当还原剂，故A 错\n误；",
+     "B 错：“浸铜”时，铜屑中加入H2SO4 和H2O2 得到Cu2+，反应的离子方程式为：\n+\n2\n2\n2\n2\nCu\n2H\nH O\nCu\n2H O\n+\n+\n+\n=\n+\n，故B 错误；",
+     "C 对：“脱氯”步骤中仅Cu 元素的化合价发生改变，得到CuCl 固体，即Cu 的化合价升高，Cu2+的化合价\n降低，发生归中反应，化学方程式为：\n2\nCu\nCu\n2Cl\n2CuCl\n+\n-\n+\n+\n=\n¯ ，故C 正确；",
+     "D 错：脱氯液净化后电解，Zn2+应在阴极得到电子变为Zn，故D 错误；\n故选C"
+    ],
+    "explanation": "正确答案是C。A．由分析得，“浸铜”时，铜屑不能溶解完全，Cu 在“脱氯”步骤还需要充当还原剂，故A 错\n误；\nB．“浸铜”时，铜屑中加入H2SO4 和H2O2 得到Cu2+，反应的离子方程式为：\n+\n2\n2\n2\n2\nCu\n2H\nH O\nCu\n2H O\n+\n+\n+\n=\n+\n，故B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q1",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：石灰石煅烧是碳酸钙分解生成氧化钙和二氧化碳，有新物质生成，属于化学变化，A 不符合题\n意；",
+     "B 错：磁铁矿炼铁是四氧化三铁被还原为铁单质，有新物质生成，属于化学变化，B 不符合题意；",
+     "C 错：煤的液化是通过化学反应将煤转化为液态燃料，生成新物质，属于化学变化，C 不符合题意；",
+     "D 对：石油分馏是利用沸点差异分离混合物，未生成新物质，属于物理变化，D 符合题意；\n故答案选D。"
+    ],
+    "explanation": "正确答案是D。A．石灰石煅烧是碳酸钙分解生成氧化钙和二氧化碳，有新物质生成，属于化学变化，A 不符合题\n意；\nB．磁铁矿炼铁是四氧化三铁被还原为铁单质，有新物质生成，属于化学变化，B 不符合题意；\nC．煤的液化是通过化学反应将煤转化为液态燃料，生成新物质，属于化学变化，C 不符合题意；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q5",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由Ⅰ的结构可知，其含有碳碳双键，酯基，氰基三种官能团，A 错误；",
+     "B 错：Ⅱ为高分子聚合物，含有酯基和氰基，氰基遇水不会水解，需要再一定条件下才能水解，所以遇水不会\n溶解，B 错误；",
+     "C 对：Ⅱ为高分子聚合物，相对分子质量较高，导致熔点较高，常温下为固态，C 正确；",
+     "D 错：根据Ⅰ转化为Ⅱ的结构分析，双键断开，且没有小分子生成，发生加聚反应，D 错误；\n故选C。"
+    ],
+    "explanation": "正确答案是C。A．由Ⅰ的结构可知，其含有碳碳双键，酯基，氰基三种官能团，A 错误；\nB．Ⅱ为高分子聚合物，含有酯基和氰基，氰基遇水不会水解，需要再一定条件下才能水解，所以遇水不会\n溶解，B 错误；\nC．Ⅱ为高分子聚合物，相对分子质量较高，导致熔点较高，常温下为固态，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q6",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：醇的催化氧化反应中，铜作催化剂，先发生2Cu+O2\nΔ\n2CuO，然后乙醇与CuO 在加热条件下\n2\n5\nCuO\nC H OH\n\nΔ\n3\n2\nCH CHO\nCu\nH O\n\n\n，A 错误；",
+     "B 错：因为溶度积常数Ksp(\n\n2\nMg OH\n)大于Ksp(\n\n3\nFe OH\n)，所以Fe3+与Mg(OH)2 发生沉淀转化生成Fe(OH)3，\n符合溶度积规则，B 正确；",
+     "C 错：Fe2+与K3[Fe(CN)6]反应生成KFe[Fe(CN)6]沉淀，化学方程式为\n\n\n3\n2\n6\nFe\nFe CN\nK\n\n\n\n\n\n\n\n\n\n=\n\n6\nKFe Fe CN\n\n\n\n\n，电荷和配平正确，蓝色浑浊现象合理，C 正确；",
+     "D 错：Cr2O\n2\n7\n在碱性条件下转化为CrO42-，化学方程式为\n2\n2\n2\n7\n4\n2\nCr O\n2OH\n2CrO\nH O\n\n\n\n\n\n\n，颜色由橙变黄，\nD 正确；\n故选A。"
+    ],
+    "explanation": "正确答案是A。A．醇的催化氧化反应中，铜作催化剂，先发生2Cu+O2\nΔ\n2CuO，然后乙醇与CuO 在加热条件下\n2\n5\nCuO\nC H OH\n\nΔ\n3\n2\nCH CHO\nCu\nH O\n\n\n，A 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q7",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：C、N、O 同周期，同一周期主族元素，从左到右第一电离能有逐渐增大的趋势，第VA 族的第\n一电离能大于同周期相邻的两种元素，则第一电离能N＞O＞C，故A 错误；",
+     "B 错：甲为NH4OCN，\n+\n4\nNH 中有N 原子提供孤对电子、H+提供空轨道形成的N→H 配位键，故B 错误；",
+     "C 错：乙为\n，其中有4 个N-H、2 个C-N、碳氧原子之间1 个σ键，则一个\n中\n有7 个键、1 个π键，键与π键的数目比为7：1，故C 错误；",
+     "D 对：甲为NH4OCN，其中的C 原子与N 原子形成三键、与O 原子形成单键，键电子对数为2，无孤对电\n子，C 原子采取sp 杂化，乙为\n，其中的C 原子形成3 个键，即键电子对数为3，无\n孤对电子，C 原子采取sp2 杂化，故D 正确；"
+    ],
+    "explanation": "正确答案是D。A．C、N、O 同周期，同一周期主族元素，从左到右第一电离能有逐渐增大的趋势，第VA 族的第\n一电离能大于同周期相邻的两种元素，则第一电离能N＞O＞C，故A 错误；\nB．甲为NH4OCN，\n+\n4\nNH 中有N 原子提供孤对电子、H+提供空轨道形成的N→H 配位键，故B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q10",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：由反应I→II 可知，2 分子I 通过加成得到1 分子II，该反应为加成反应，A 错误；",
+     "B 错：I 和II 中都存在羟基，可以发生酯化反应，B 正确；",
+     "C 错：I 和II 中都存在酰胺基，可以发生水解反应，C 正确；",
+     "D 错：根据反应I→II 可知，2 分子I 通过加成得到1 分子II，双键加成形成环状结构，乙烯在UV 下能生成环\n丁烷，D 正确；\n答案选A。"
+    ],
+    "explanation": "正确答案是A。A．由反应I→II 可知，2 分子I 通过加成得到1 分子II，该反应为加成反应，A 错误；\nB．I 和II 中都存在羟基，可以发生酯化反应，B 正确；\nC．I 和II 中都存在酰胺基，可以发生水解反应，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q14",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q14.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：根据图像可知氢离子浓度影响振幅大小，A 错误；",
+     "B 错：反应④中亚硫酸被氧化，反应的离子方程式为\n2\n2\n3\n3\n4\n3H SO\nBrO\n3SO\nBr\n6H\n\n\n\n\n\n\n\n\n，B 正确；",
+     "C 错：由于①②为快速反应，而溴酸根离子直接氧化的是亚硫酸，所以反应①~④中，H对\n2\n3\nSO 的氧化起\n催化作用，C 正确；",
+     "D 错：根据题干信息和图像可知利用pH 响应变色材料，可将pH 振荡可视化，D 正确；\n答案选A。"
+    ],
+    "explanation": "正确答案是A。A．根据图像可知氢离子浓度影响振幅大小，A 错误；\nB．反应④中亚硫酸被氧化，反应的离子方程式为\n2\n2\n3\n3\n4\n3H SO\nBrO\n3SO\nBr\n6H\n\n\n\n\n\n\n\n\n，B 正确；\nC．由于①②为快速反应，而溴酸根离子直接氧化的是亚硫酸，所以反应①~④中，H对\n2\n3\nSO 的氧化起\n催化作用，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q15",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2025-q15.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：降低温度",
+     "B 对：增大压强，反应体系中的活化分子数增加，化学反应速率加快，DMO 的转化率增大，B 符合题意；",
+     "C 错：减小初始的氢酯比导致体系中氢含量下降，DMO 的转化率降低，C 不符合题意；",
+     "D 错：A 点时DMO 的转化率为80%，升高温度后转化率持续上升说明A 点时反应未平衡，延长原料和催化剂\n的反应时间可以促进反应的继续进行，增大DMO 的转化率，D 符合题意；\n故答案选BD；\n③483K 时，DMO 的实际转化率为99%，设起始投入反应的DMO 为100mol"
+    ],
+    "explanation": "正确答案是B。A．根据以上分析可知Ⅲ为\n\n\n3\n2\nAg NH\n\n\n\n\n的变化曲线，A 正确；\nB．溶液中存在电荷守恒，D 点时溶液显碱性，则\n\n\n\n\n\n4\nc NH\nc OH\n0.1 c H\n\n\n\n\n\n＜\n，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q3",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：铜与浓硫酸在加热条件下生成硫酸铜和二氧化硫，其化学方程式为Cu+2H2SO4(浓)\n\nCuSO4+SO2↑+2H2O，A 正确；",
+     "B 对：少量\nAlCl3 溶液滴入足量浓烧碱溶液，生成四羟基合铝酸钠，其化学方程式为\nAlCl3+4NaOH=NaAl(OH)4+3NaCl，B 错误；",
+     "C 错：乙烯含碳碳双键，和溴发生加成反应生成1,2-二溴乙烷，其化学方程式为CH2=CH2+Br2→CH2BrCH2Br，\nC 正确；",
+     "D 错：Ag2S 的溶解度远小于AgCl，所以向AgCl 悬浊液中加入Na2S 发生沉淀转化生成Ag2S，其化学方程式\n为Na2S(aq)+2AgCl(s)=Ag2S(s)+2NaCl(aq)，D 正确； \n故选B。"
+    ],
+    "explanation": "正确答案是B。A．铜与浓硫酸在加热条件下生成硫酸铜和二氧化硫，其化学方程式为Cu+2H2SO4(浓)\n\nCuSO4+SO2↑+2H2O，A 正确； \nB ．少量\nAlCl3 溶液滴入足量浓烧碱溶液，生成四羟基合铝酸钠，其化学方程式为\nAlCl3+4NaOH=NaAl(OH)4+3NaCl，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q5",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q5.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：食用油可在面团表面形成隔离层，减少水分蒸发，能达到锁水目的，A 不符合题意；",
+     "B 错：高温蒸煮可杀灭番茄酱中的微生物，密闭保存能隔绝外界微生物进入，可实现保鲜，B 不符合题意；",
+     "C 错：料酒中的乙醇和香醋中的乙酸在加热条件下发生酯化反应，生成具有香味的酯类物质，可提升菜肴风味，\nC 不符合题意；",
+     "D 对：蚕丝的主要成分为蛋白质，苏打（碳酸钠）在热水中水解使溶液碱性较强，加热条件下蛋白质易发生水\n解，会毁蚕丝衣物，D 符合题意； \n故选D。"
+    ],
+    "explanation": "正确答案是D。A．食用油可在面团表面形成隔离层，减少水分蒸发，能达到锁水目的，A 不符合题意； \nB．高温蒸煮可杀灭番茄酱中的微生物，密闭保存能隔绝外界微生物进入，可实现保鲜，B 不符合题意； \nC．料酒中的乙醇和香醋中的乙酸在加热条件下发生酯化反应，生成具有香味的酯类物质，可提升菜肴风味，\nC 不符合题意；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q6",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q6.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：由反应①为\n5\n6\n5\n5\n2\n2\n2\n(\n)\nMg\nC H\nMg C H\nH\n+\n→\n+\n可知，每消耗\n5\n6\n0.5molC H ，生成\n5\n5\n2\n(\n)\nMg C H\n的物质的量为0.25 mol，则分子数为\nA\n0.25N ，A 错误；",
+     "B 错：2.24L N2 未指明在标准状况下，物质的量不一定为0.1mol，则生成的\n3\nN −的数目不一定为\nA\n0.2N ，B 错\n误；",
+     "C 对：4.4g 的物质的量为\n4.4g\nn=\n=0.1mol\n44g/mol\n，反应③为\n2\n2Mg+CO\n2MgO+C\n点燃\n，C 的化合价由+4 价降\n低为0 价，转移4 个电子，故每消耗4.4g\n2\nCO ，转移的电子数为\nA\n0.4N\n，C 正确；",
+     "D 错：1\n2\n0.15mol L MgCl\n−\n\n溶液的体积未知，无法计算\n2+\nMg\n，D 错误； \n故选C。"
+    ],
+    "explanation": "正确答案是C。A．由反应①为\n5\n6\n5\n5\n2\n2\n2\n(\n)\nMg\nC H\nMg C H\nH\n+\n→\n+\n可知，每消耗\n5\n6\n0.5molC H ，生成\n5\n5\n2\n(\n)\nMg C H\n的物质的量为0.25 mol，则分子数为\nA\n0.25N ，A 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q8",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：手性碳原子是指连有\n4 个不同原子或原子团的饱和碳原子，如图\n（带*号的为手性碳），则奥利司他中含有的手性C 原子为\n4 个，A 错误；",
+     "B 错：由奥利司他的结构可知，分子中含有\n官能团，能形成分子内氢键，B 正确；",
+     "C 错：由奥利司他的结构可知，分子中含有\n官能团，具有还原性，能使酸性高锰酸钾溶液褪色，C\n正确；",
+     "D 错：由奥利司他的结构可知，分子中含有酰胺键和酯基，能够发生水解反应，正确； \n故选A。"
+    ],
+    "explanation": "正确答案是A。A ．手性碳原子是指连有\n4 个不同原子或原子团的饱和碳原子，如图\n（带*号的为手性碳），则奥利司他中含有的手性C 原子为\n4 个，A 错误； \nB．由奥利司他的结构可知，分子中含有\n官能团，能形成分子内氢键，B 正确； \nC．由奥利司他的结构可知，分子中含有\n官能团，具有还原性，能使酸性高锰酸钾溶液褪色，C\n正确；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q10",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：M 、W 、Z，分别为O、Na、S，\n+\nNa 与\n2\nO −电子层结构相同，核电荷数越大半径越小，故\n+\n2\nNa <O −；\n2\nS −有3 个电子层，半径大于\n+\nNa 与\n2\nO −，因此简单离子半径\n+\n2\n2\nNa <O\nS\n−\n−\n\n，A 正确；",
+     "B 对：Y、Z、M 的简单氢化物分别为\n4\nSiH 、\n2\nH S 、\n2\nH O ，\n2\nH O 含氢键沸点最高；\n2\nH S 相对分子质量大于\n4\nSiH ，\n分子间作用力更强，沸点\n2\n4\nH S>SiH ，故沸点顺序为\n4\n2\n2\nSiH\nH S\nH O\n\n\n，B 错误；",
+     "C 错：X、Y、M 分别为Al、Si、O，同周期第一电离能随原子序数增大整体升高，故Al\nSi\nS\n\n\n；同主族从\n上到下，第一电离能降低，第一电离能S<O，因此第一电离能Al<Si<O ，C 正确；",
+     "D 错：X、Y、Z 分别为Al、Si、S，均为第三周期元素，非金属性逐渐增强，最高价氧化物水化物分别为两性\n的\n3\nAl(OH) 、弱酸\n2\n3\nH SiO 、强酸\n2\n4\nH SO ，酸性依次增强，故酸性\n4\n3\n2\n3\n2\nAl(OH)\nH SiO\nH SO\n\n\n，D 正确； \n故选B。"
+    ],
+    "explanation": "正确答案是B。A．M 、W 、Z，分别为O、Na、S，\n+\nNa 与\n2\nO −电子层结构相同，核电荷数越大半径越小，故\n+\n2\nNa <O −；\n2\nS −有3 个电子层，半径大于\n+\nNa 与\n2\nO −，因此简单离子半径\n+\n2\n2\nNa <O\nS\n−\n−\n\n，A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q12",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：“浸渍”时\n2S\nNa\n和生成的\n2\nNa Te 都具有还原性，通入过量空气时，过量\n2\nO 会进一步将\n2\nS −氧\n化为更高价态的物质，发生副反应，A 错误；",
+     "B 错：铜阳极泥中的Au 不参与浸渍反应，留在滤渣中，Au 不溶于浓硝酸（仅溶于王水），因此滤渣不能全部\n溶于浓硝酸，B 错误；",
+     "C 对：2\nNa Te 被\n2\nO 氧化生成\n2\n2\nNa Te 的反应方程式为：\n2\n2\n2\n2\n2\n4Na Te\nO\n2H O\n2Na Te\n4NaOH\n+\n+\n=\n+\n，反应\n生成强碱NaOH ，溶液中(OH )\nc\n−增大，碱性增强，C 正确；",
+     "D 错：滤液1 中Te 在\n2\n2\nNa Te 中为1\n−价，沉碲得到0 价碲单质，Te 化合价升高被氧化，因此\n2\n3\nNa SO 做氧化\n剂参与氧化还原反应，被还原，D 错误； \n故选C。"
+    ],
+    "explanation": "正确答案是C。A．“浸渍”时\n2S\nNa\n和生成的\n2\nNa Te 都具有还原性，通入过量空气时，过量\n2\nO 会进一步将\n2\nS −氧\n化为更高价态的物质，发生副反应，A 错误； \nB．铜阳极泥中的Au 不参与浸渍反应，留在滤渣中，Au 不溶于浓硝酸（仅溶于王水），因此滤渣不能全部\n溶于浓硝酸，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q15",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-7",
+    "multi": false,
+    "image": "real/ln2026-q15.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：低温高压 B．低温低压 C．高温低压 D．高温高压 \n（3）传统费托合成低碳烯烃收率低。我国科研工作者研发出转化率和选择性均优异的催化剂。图1 中抑制\n副反应的最适宜催化剂为__________（填“MgAPO”、“SAPO ”或“GeAPO”）。",
+     "B 错：题中反应的\n(\n) (\n)\n(\n)\n(\n)\n2\nc CuAc\nc H\nK\nc Cu\nc HAc\n+\n+\n+\n\n=\n\n，当pH=3.46 时，由Ⅰ和Ⅱ相交可知，此时(\n)\n(\n)\n2\nc CuAc\nc Cu\n+\n+\n=\n，\n且由M 点坐标可知，(\n)\n0.86\n10\n/\nc HAc\nmol L\n−\n=\n",
+     "C 对：根据P 点坐标，此时pH=5.75，(\n)\n(\n)\n1.87\n10\nc CuAc\nc HAc\n+\n−\n=\n=\n，反应\n2\nCu\nHAc\nCuAc\nH\n+\n+\n+\n+\n=\n+\n的平\n衡常数\n2.60\n10\nK\n−\n=\n，代入数据得到：\n(\n)\n5.75\n2.60\n2\n10\n10\nc Cu\n−\n−\n+\n=\n",
+     "D 错：根据题意，C 元素总物质的量不变，即总醋酸根(含各种形态)的浓度保持为0.20 mol/L，存在物料守恒： \n(\n)\n(\n)\n(\n)\n(\n)\n2\n2\n0.20\n/\nc Ac\nc CuAc\nc HAc\nc CuAc\nmol L\n−\n+\n+\n+\n+\n=\n"
+    ],
+    "explanation": "正确答案是C。A．由分析可知，Ⅰ为CuAc+ 的变化曲线，A 正确； \n \n \n \n \nB．题中反应的\n(\n) (\n)\n(\n)\n(\n)\n2\nc CuAc\nc H\nK\nc Cu\nc HAc\n+\n+\n+\n\n=\n\n，当pH=3.46 时，由Ⅰ和Ⅱ相交可知，此时(\n)\n(\n)\n2\nc CuAc\nc Cu\n+\n+\n=\n，\n且由M 点坐标可知",
+    "real": true
+   }
+  ],
   "grade": "senior"
  },
  {
@@ -3198,6 +4854,34 @@ button[hidden]{display:none!important}
      "D 错：有效数字要与已知数据匹配，不是越多越好。"
     ],
     "explanation": "守恒法抓住始态和终态，不必逐步求中间产物，可简化多步反应计算。图像斜率反映速率，斜率越大反应越快；有效数字要与测量精度相符。对应第 1、2、3 步。"
+   }
+  ],
+  "realQuestions": [
+   {
+    "id": "ln2026-q14",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-8",
+    "multi": false,
+    "image": "real/ln2026-q14.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：观察图像可知，随着温度的升高，C3H8 的物质的量分数逐渐降低。这说明升高温度促使平衡\n向正反应方向移动，根据勒夏特列原理，正反应为吸热反应，因此\n0\nH\n\n\n，另外，反应物气体共4 分子，\n生成物气体共6 分子，正反应是气体分子数增大的过程，因此\n0\nS\n\n，A 错误；",
+     "B 错：前面已推断出a 物质是C3H6。在同一个化学反应中，各物质的反应速率之比等于方程式中对应的化学计\n量数之比。C3H6 与C3H8 的化学计量数均为3，因此在反应过程中的任何时刻，\n3\n8\nC H 的消耗速率等于a 物\n质(\n3\n6\nC H )的生成速率，B 错误；",
+     "C 错：列三段式：\n3\n8\n2\n3\n6\n2\n2\n3C H\n+\nSO\n3C H\n+\nH S\n+\n2H O\nmol\n1\n1\n0\n0\n0\nmol\n3\n3\n2x\nmol\n1 3\n1\n3\n2\nx\nx\nx\nx\nx\nx\nx\nx\nx\n−\n−\n垐?\n噲?\n初始\n变化\n平衡\n，M 点时，C3H8 曲\n线与b 曲线(H2O)相交",
+     "D 对：N 点时，C3H8 曲线与c 曲线(H2S)相交，说明两者的物质的量分数相等:1-3x=x，解得x=0.25。此时C3H8\n转化了0.75 mol，故C3H8 的平衡转化率为：0.75\n100%\n75%\n1\nmol\nmol\n\n=\n，D 正确； \n故选D。"
+    ],
+    "explanation": "正确答案是D。A．观察图像可知，随着温度的升高，C3H8 的物质的量分数逐渐降低。这说明升高温度促使平衡\n向正反应方向移动，根据勒夏特列原理，正反应为吸热反应，因此\n0\nH\n\n\n，另外，反应物气体共4 分子，\n生成物气体共6 分子，正反应是气体分子数增大的过程，因此\n0\nS\n\n，A 错误； \nB．前面已推断出a 物质是C3H6。",
+    "real": true
    }
   ],
   "grade": "senior"
@@ -4000,6 +5684,320 @@ button[hidden]{display:none!important}
     "explanation": "催化剂同等程度加快正逆反应，不改变平衡转化率。升温正逆速率都增大；原电池阳离子向正极移动；电解池阳极发生氧化反应。对应第 2、3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q10",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2021-q10.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，放电时，M 电极反应为Li-e-=Li+，A 错误；",
+     "B 对：由分析可知，放电时，M 极为负极，N 极为正极，故\n+\nLi\n由M 电极向N 电极移动，B 正确；",
+     "C 错：由二次电池的原理可知，充电时和放电时同一电极上发生的反应互为逆过程，M 电极的电极反应为：\nLi++e-= Li，故电极质量增大，C 错误；",
+     "D 错：由二次电池的原理可知，充电时和放电时同一电极上发生的反应互为逆过程，充电时，N 电极反应为\n-\n+\n3\nLi Bi - 3e =3Li +Bi ，D 错误；"
+    ],
+    "explanation": "正确答案是B。A．由分析可知，放电时，M 电极反应为Li-e-=Li+，A 错误；\nB．由分析可知，放电时，M 极为负极，N 极为正极，故\n+\nLi\n由M 电极向N 电极移动，B 正确；\nC．由二次电池的原理可知，充电时和放电时同一电极上发生的反应互为逆过程，M 电极的电极反应为：\nLi++e-= Li，故电极质量增大，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2021-q11",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2021-q11.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据勒夏特列原理可知，升高温度，化学平衡向着吸热反应方向移动，而\nc Z 增大，说明平\n衡正向移动，故则ΔH>0 ，A 正确；",
+     "B 错：加入一定量Z，Z 的浓度增大，平衡逆向移动，故达新平衡后\n\nm Y 减小，B 正确；",
+     "C 对：加入等物质的量的Y 和Z，Z 的浓度增大，平衡逆向移动，由于X、Y 均为固体，故K=c(Z)，达新平衡\n后\nc Z 不变，C 错误；",
+     "D 错：加入一定量氩气，加入瞬间，X、Z 的浓度保持不变，故正、逆反应速率不变，故平衡不移动，D 正确；"
+    ],
+    "explanation": "正确答案是C。A．根据勒夏特列原理可知，升高温度，化学平衡向着吸热反应方向移动，而\nc Z 增大，说明平\n衡正向移动，故则ΔH>0 ，A 正确；\nB．加入一定量Z，Z 的浓度增大，平衡逆向移动，故达新平衡后\n\nm Y 减小，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q12",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2022-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：放电时负极失电子，发生氧化反应，电极反应：\n\n\n\n\n-\n+\n3\n2\n4\n2\n4\n3\n3\nNa Ti\nPO\n-2e =NaTi\nPO\n+2Na ，故A 正确；",
+     "B 错：放电时，阴离子移向负极，放电时\n-\nCl 透过多孔活性炭电极向NaCl 中迁移，故B 错误；",
+     "C 错：放电时每转移1mol 电子，正极：Cl2+2e-=2Cl-，理论上\n4\nCCl 释放\n2\n0.5mol Cl ，故C 错误；",
+     "D 错：充电过程中，阳极：2Cl--2e-=Cl2，消耗氯离子，NaCl溶液浓度减小，故D 错误；\n故选A。\n第9 页 | 共21 页"
+    ],
+    "explanation": "正确答案是A。A． 放电时负极失电子，发生氧化反应，电极反应：\n\n\n\n\n-\n+\n3\n2\n4\n2\n4\n3\n3\nNa Ti\nPO\n-2e =NaTi\nPO\n+2Na ，故A 正确；\nB． 放电时，阴离子移向负极，放电时\n-\nCl 透过多孔活性炭电极向NaCl 中迁移，故B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q7",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2023-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：由分析可知，a 为正极，b 电极为负极，则a 端电势高于b 端电势，A 错误；",
+     "B 错：右侧电极上产生氢气的电极方程式为：2H++2e-=H2↑，则理论上转移2mole- 生成\n2\n2gH ，B 错误；",
+     "C 错：由图可知，该装置的总反应为电解海水的装置，随着电解的进行，海水的浓度增大，但是其pH 基本不\n变，C 错误；",
+     "D 对：由图可知，阳极上的电极反应为：\n-\n-\n+\nCl +H O-2e =HClO+H\n₂\n，D 正确；\n故选D。"
+    ],
+    "explanation": "正确答案是D。A．由分析可知，a 为正极，b 电极为负极，则a 端电势高于b 端电势，A 错误；\nB．右侧电极上产生氢气的电极方程式为：2H++2e-=H2↑，则理论上转移2mole- 生成\n2\n2gH ，B 错误；\nC．由图可知，该装置的总反应为电解海水的装置，随着电解的进行，海水的浓度增大，但是其pH 基本不\n变，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q9",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2023-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：W 与X 的化合物不一定为极性分子，如CH4 就是非极性分子，A 错误；",
+     "B 错：同周期元素从左到右第一电离能呈增大趋势，则第一电离能F>O>C，B 错误；",
+     "C 错：Q 为Al，Al2O3 为两性氧化物，C 正确；",
+     "D 错：该阴离子中L 与Q 之间形成配位键，D 正确；\n故答案选AB。"
+    ],
+    "explanation": "正确答案是A。A．W 与X 的化合物不一定为极性分子，如CH4 就是非极性分子，A 错误；\nB．同周期元素从左到右第一电离能呈增大趋势，则第一电离能F>O>C，B 错误；\nC．Q 为Al，Al2O3 为两性氧化物，C 正确；\nD．该阴离子中L 与Q 之间形成配位键，D 正确；\n故答案选AB。",
+    "real": true
+   },
+   {
+    "id": "ln2023-q11",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2023-q11.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：放电时负极上Pb 失电子结合硫酸根离子生成PbSO4 附着在负极上，负极质量增大，A 错误；",
+     "B 对：储能过程中，该装置为电解池，将电能转化为化学能，B 正确；",
+     "C 错：放电时，右侧为正极，电解质溶液中的阳离子向正极移动，左侧的H+通过质子交换膜移向右侧，C 错\n误；",
+     "D 错：充电时，总反应为PbSO4+2Fe2+=Pb+\n2\n4\nSO - +2Fe3+，D 错误；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．放电时负极上Pb 失电子结合硫酸根离子生成PbSO4 附着在负极上，负极质量增大，A 错误；\nB．储能过程中，该装置为电解池，将电能转化为化学能，B 正确；\nC．放电时，右侧为正极，电解质溶液中的阳离子向正极移动，左侧的H+通过质子交换膜移向右侧，C 错\n误；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q12",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2024-q12.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：由以上分析可知，阳极反应：①HCHO+OH--e-→HCOOH+ 1\n2\nH2，②HCOOH+OH-=HCOO-\n+H2O，阴极反应2H2O-2e-=H2↑+2OH-，即转移2mol 电子时，阴、阳两极各生成1molH2，共2molH2，而\n第9 页/共23 页\n传统电解水：\n2\n2\n2\n2H O\n2H\nO\n­ +\n­\n电解\n",
+     "B 错：阴极水得电子生成氢气，阴极反应为2H2O-2e-=H2↑+2OH-，故B 正确；",
+     "C 错：由电极反应式可知，电解过程中阴极生成OH-，负电荷增多，阳极负电荷减少，要使电解质溶液呈电\n中性，\n-\nOH 通过阴离子交换膜向阳极移动，即向b 极方向移动，故C 正确；",
+     "D 错：由以上分析可知，阳极反应涉及到：①HCHO+OH--e-→HCOOH+ 1\n2\nH2，②HCOOH+OH-=HCOO-\n+H2O，由(①+②)×2 得阳极反应为：\n-\n-\n-\n2\n2\n2HCHO-2e +4OH\n2HCOO +2H O+H\n=\n­ ，故D 正确；\n答案选A。"
+    ],
+    "explanation": "正确答案是A。A．由以上分析可知，阳极反应：①HCHO+OH--e-→HCOOH+ 1\n2\nH2，②HCOOH+OH-=HCOO-\n+H2O，阴极反应2H2O-2e-=H2↑+2OH-，即转移2mol 电子时，阴、阳两极各生成1molH2，共2molH2，而\n第9 页/共23 页\n传统电解水：\n2\n2\n2\n2H O\n2H\nO\n­ +\n­\n电解\n",
+    "real": true
+   },
+   {
+    "id": "ln2024-q15",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2024-q15.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：增大HCl 的流速，由图像可知，HCl 的转化率在减小，不符合题意；",
+     "B 错：M 对应温度为360℃，由图像可知，升高温度，HCl 的转化率增大，符合题意；",
+     "C 错：增大n(HCl):n(O2)，HCl 的转化率减小，不符合题意；",
+     "D 对：使用高效催化剂，可以增加该温度下的反应速率，使单位时间内HCl 的转化率增加，符合题意；\n故选BD。\n【小问4 详解】\n图中在较高流速下，T3 温度下的转化率低于温度较高的T1 和T2，主要是流速过快，反应物分子来不及在催\n化剂表面接触而发生反应，导致转化率下降，同时，T3 温度低，反应速率低，故单位时间内氯化氢的转化\n率低。"
+    ],
+    "explanation": "正确答案是D。A．由分析得，曲线②为AgCl 沉淀溶解平衡曲线，故A 正确；\nB．反应\n+\n+\n-\n2\n4\n4\nAg CrO +H\n2Ag +HCrO\nƒ\n的平衡常数\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\n2\n2\n11.7\n4\n4\n4\nsp\n2\n4\n5.2\n6.5\n+\n+\n2\na2\n2\n4\n4\nc\nAg\nc",
+    "real": true
+   },
+   {
+    "id": "ln2025-q4",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2025-q4.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：反应①电解熔融NaCl 生成\n2\nCl ，标准状况下11.2L\n2\nCl 为0.5mol，含0.5×2=1mol 原子，即\nA\nN ，\nA 正确；",
+     "B 错：2.3g Na（0.1mol）与氧气加热反应生成0.05mol\n2\n2\nNa O ，每个\n2\n2\nNa O 含1 个O-O 非极性键，所以非极\n性键数目为\nA\n0.05N ，B 错误；",
+     "C 错：2\n2\nNa O 与水反应生成氢氧化钠和氧气，化学方程式为\n2\n2\n2\n2\n2Na O +2H O=4NaOH+O ，1mol\n2\n2\nNa O 与\n水反应转移1mol 电子，数目为\nA\nN ，C 错误；",
+     "D 错：ClO⁻在水中会水解，故ClO数目小于\nA\n0.1N ，D 错误；\n故选A。"
+    ],
+    "explanation": "正确答案是A。A．反应①电解熔融NaCl 生成\n2\nCl ，标准状况下11.2L\n2\nCl 为0.5mol，含0.5×2=1mol 原子，即\nA\nN ，\nA 正确；\nB．2.3g Na（0.1mol）与氧气加热反应生成0.05mol\n2\n2\nNa O ，每个\n2\n2\nNa O 含1 个O-O 非极性键，所以非极\n性键数目为\nA\n0.05N ，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q13",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2025-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：放电时b 电极是正极，阳离子向正极移动，所以Na向b 极迁移，A 正确；",
+     "B 错：负极消耗氯离子，正极消耗钠离子，所以该电池可用于海水脱盐，B 正确；",
+     "C 错：a 电极是负极，电极反应式为\n\n\n2\n2\n2\n3\nCu O\n2H O\nCl\n2e\nCu\nOH\nCl\nH\n\n\n\n\n\n\n\n\n，C 正确；",
+     "D 对：若以Ag/AgCl 电极代替a 极，此时Ag 失去电子，结合氯离子生成氯化银，所以电池不会失去储氯能力，\nD 错误；\n答案选D。"
+    ],
+    "explanation": "正确答案是D。A．放电时b 电极是正极，阳离子向正极移动，所以Na向b 极迁移，A 正确；\nB．负极消耗氯离子，正极消耗钠离子，所以该电池可用于海水脱盐，B 正确；\nC．a 电极是负极，电极反应式为\n\n\n2\n2\n2\n3\nCu O\n2H O\nCl\n2e\nCu\nOH\nCl\nH\n\n\n\n\n\n\n\n\n，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q1",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2026-q1.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     0
+    ],
+    "optionNotes": [
+     "A 对：锂离子电池属于原电池装置，工作时可将化学能转化为电能，A 正确；",
+     "B 错：氮化镓（GaN）属于新型无机非金属材料，不是有机材料，B 错误；",
+     "C 错：光导纤维纤芯\n主要成分是二氧化硅，单晶硅是芯片的主要成分，C 错误；",
+     "D 错：冷却液汽化属于物理变化，仅克服分子间作用力，不涉及化学键断裂，D 错误； \n故选A。"
+    ],
+    "explanation": "正确答案是A。A．锂离子电池属于原电池装置，工作时可将化学能转化为电能，A 正确； \nB．氮化镓（GaN）属于新型无机非金属材料，不是有机材料，B 错误； \nC．光导纤维纤芯\n主要成分是二氧化硅，单晶硅是芯片的主要成分，C 错误； \nD．冷却液汽化属于物理变化，仅克服分子间作用力，不涉及化学键断裂，D 错误； \n故选A。",
+    "real": true
+   },
+   {
+    "id": "ln2026-q13",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-13",
+    "multi": false,
+    "image": "real/ln2026-q13.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：如上分析，左侧通入氧气生成双氧水，且在\n2\n4\nNa SO 溶液中可生成OH-，该方程式书写正确，\nA 正确",
+     "B 错：电路中转移2mol 电子时，整个体系总电子转移量为2mol ，每释放1molLi+ 对应1mol 电子转移\n（\n4\n4\nLiFePO\ne\nFePO\nLi\n−\n+\n−\n=\n+\n），双电极可同时回收Li+ ，理论上可回收4molLi+ ，B 正确；",
+     "C 错：右侧发生氧化反应：I−被氧化为\n3I−，阳极连接电源正极，C 正确；",
+     "D 对：若\n3I−歧化转化为I−和\n3\nIO−，反应为：\n3\n2\n3\n3\n3\n8\n6\nI\nH O\nI\nIO\nH\n−\n−\n−\n+\n+\n=\n+\n+\n，该歧化反应为碘自身氧化还原，\n总可得到的电子数（氧化\n4\nLiFePO 的总能力）不变：\n3\n3\nI\nmol\n−原本可得到6mol 电子"
+    ],
+    "explanation": "正确答案是D。A．如上分析，左侧通入氧气生成双氧水，且在\n2\n4\nNa SO 溶液中可生成OH-，该方程式书写正确，\nA 正确 \nB．电路中转移2mol 电子时，整个体系总电子转移量为2mol ，每释放1molLi+ 对应1mol 电子转移\n（\n4\n4\nLiFePO\ne\nFePO\nLi\n−\n+\n−\n=\n+\n），双电极可同时回收Li+ ",
+    "real": true
+   }
+  ],
   "grade": "senior"
  },
  {
@@ -4160,6 +6158,320 @@ button[hidden]{display:none!important}
     "explanation": "孤电子对只受一个原子核吸引，电子云更靠近中心原子，排斥力大于成键电子对。同一能级轨道能量相同；含极性键的分子不一定有极性；顶点粒子只占 1/8。对应第 2、3 步。"
    }
   ],
+  "realQuestions": [
+   {
+    "id": "ln2021-q7",
+    "year": 2021,
+    "source": "2021年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2021-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     3
+    ],
+    "optionNotes": [
+     "A 错：S 的价电子排布式为：3s23p4，故S 位于元素周期表p 区，A 正确；",
+     "B 错：由该物质形成晶体的晶胞可知：S 个数为\n1\n8×\n+1=2\n8\n，H 个数为：\n1\n1\n12×\n+6×\n=6\n4\n2\n，故H、S 原子个数比\n为3:1，故该物质的化学式为\n3\nH S，B 正确；",
+     "C 错：S 位于H 构成的八面体空隙中，如图所示\n，C 正确；",
+     "D 对：由于该晶体是一种新型超导材料，说明其是由阴、阳离子构成的，故该晶体属于离子晶体，D 错误；"
+    ],
+    "explanation": "正确答案是D。A．S 的价电子排布式为：3s23p4，故S 位于元素周期表p 区，A 正确；\nB．由该物质形成晶体的晶胞可知：S 个数为\n1\n8×\n+1=2\n8\n，H 个数为：\n1\n1\n12×\n+6×\n=6\n4\n2\n，故H、S 原子个数比\n为3:1，故该物质的化学式为\n3\nH S，B 正确；\nC．S 位于H 构成的八面体空隙中，如图所示\n，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2022-q8",
+    "year": 2022,
+    "source": "2022年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2022-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：由\n13\nN+ 的结构式可知，所有N 原子均满足8 电子稳定结构，A 正确；",
+     "B 对：中心N 原子为\n3\nsp 杂化，与中心N 原子直接相连的N 原子为\n2\nsp 杂化，与端位N 原子直接相连的N 原\n子为sp 杂化，端位N 原子为\n2\nsp 杂化，则N 原子的杂化方式有3 种，B 错误；",
+     "C 错：中心N 原子为\n3\nsp 杂化，则其空间结构为四面体形，C 正确；",
+     "D 错：13\nN+ 中含叠氨结构(\n··\n··\nN\nN\nN :\n-\n=\n=\n)，常温下不稳定，D 正确；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．由\n13\nN+ 的结构式可知，所有N 原子均满足8 电子稳定结构，A 正确；\nB．中心N 原子为\n3\nsp 杂化，与中心N 原子直接相连的N 原子为\n2\nsp 杂化，与端位N 原子直接相连的N 原\n子为sp 杂化，端位N 原子为\n2\nsp 杂化，则N 原子的杂化方式有3 种，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q2",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2023-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：BeCl2 的中心原子为Be，根据VSEPR 模型可以计算，BeCl2 中不含有孤电子对，因此BeCl2 为\n直线型分子，A 错误；",
+     "B 对：P4 分子中相邻两P 原子之间形成共价键，同种原子之间形成的共价键为非极性共价键，P4 分子中的共价\n键类型为非极性共价键，B 正确；\n的\n第2 页 | 共22 页",
+     "C 错：Ni 原子的原子序数为28，其基态原子的价电子排布为3d84s2，C 错误；",
+     "D 错：顺-2-丁烯的结构中两个甲基在双键的同一侧，其结构简式为\n，D 错误；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．BeCl2 的中心原子为Be，根据VSEPR 模型可以计算，BeCl2 中不含有孤电子对，因此BeCl2 为\n直线型分子，A 错误；\nB．P4 分子中相邻两P 原子之间形成共价键，同种原子之间形成的共价键为非极性共价键，P4 分子中的共价\n键类型为非极性共价键，B 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q8",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2023-q8.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据a 和c 的结构简式可知，a 与b 发生取代反应生成c 和HCl，A 正确；",
+     "B 错：a 中含有酚羟基，酚羟基呈弱酸性能与NaOH 反应，b 可在NaOH 溶液中发生水解反应，生成醇类，B\n正确；",
+     "C 对：根据C 的结构简式可知，冠醚中有四种不同化学环境的氢原子，如图所示：\n ， 核磁共振氢谱有4 组峰，C 错误；",
+     "D 错：c 可与K+形成鳌合离子\n，该物质在苯中溶解度较大，因此c 可增加\nKI 在苯中的溶解度，D 正确；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．根据a 和c 的结构简式可知，a 与b 发生取代反应生成c 和HCl，A 正确；\nB．a 中含有酚羟基，酚羟基呈弱酸性能与NaOH 反应，b 可在NaOH 溶液中发生水解反应，生成醇类，B\n正确；\nC ．根据C 的结构简式可知，冠醚中有四种不同化学环境的氢原子，如图所示：\n ， 核磁共振氢谱有4 组峰，C 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2023-q14",
+    "year": 2023,
+    "source": "2023年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2023-q14.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据均摊法，图1 的晶胞中含Li：8× 1\n4\n+1=3，O：2×\n1\n2 =1，Cl：4× 1\n4\n=1，1 个晶胞的质量为\nA\n3 7 16\n35.5\nN\n´ +\n+\ng=\nA\n72.5\nN\ng，晶胞的体积为(a×10-10cm)3=a3×10-30cm3",
+     "B 错：图1 晶胞中，O 位于面心，与O 等距离最近的Li 有6 个，O 原子的配位数为6，B 项正确；\n的\n第10 页 | 共22 页",
+     "C 对：根据均摊法，图2 中Li：1，Mg 或空位为8× 1\n4\n=2。O：2×\n1\n2 =1，Cl 或Br：4× 1\n4\n=1，Mg 的个数小于\n2，根据正负化合价的代数和为0，图2 的化学式为LiMgOClxBr1-x，C 项错误；",
+     "D 错：进行镁离子取代及卤素共掺杂后，可获得高性能固体电解质材料，说明Mg2+取代产生的空位有利于Li+\n的传导，D 项正确；\n答案选C。"
+    ],
+    "explanation": "正确答案是C。A．根据均摊法，图1 的晶胞中含Li：8× 1\n4\n+1=3，O：2×\n1\n2 =1，Cl：4× 1\n4\n=1，1 个晶胞的质量为\nA\n3 7 16\n35.5\nN\n´ +\n+\ng=\nA\n72.5\nN\ng，晶胞的体积为(a×10-10cm)3=a3×10-30cm3",
+    "real": true
+   },
+   {
+    "id": "ln2024-q2",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2024-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：中子数为1 的He 核素其质量数为1+2=3，故其表示应为\n3\n2 He，A 错误；",
+     "B 错：SiO2 晶体中只含有共价键，\n共价晶体，B 错误；",
+     "C 对：两个F 原子的2p 轨道单电子相互重叠形成p-p σ 键，C 正确；",
+     "D 错：PCl3 的中心原子存在1 对孤电子对，其VSEPR 模型为四面体型，PCl3 的空间结构为三角锥型，D 错误；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．中子数为1 的He 核素其质量数为1+2=3，故其表示应为\n3\n2 He，A 错误；\nB．SiO2 晶体中只含有共价键，\n共价晶体，B 错误；\nC．两个F 原子的2p 轨道单电子相互重叠形成p-p σ 键，C 正确；\nD．PCl3 的中心原子存在1 对孤电子对，其VSEPR 模型为四面体型，PCl3 的空间结构为三角锥型，D 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q7",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2024-q7.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：根据X 的结构简式可知，其结构中含有酯基和酰胺基，因此可以发生水解反应，A 错误；",
+     "B 错：有机物Y 中含有氨基，其呈碱性，可以与盐酸发生反应生成盐，生成的盐在水中的溶解性较好，B 错\n误；",
+     "C 对：有机物Z 中含有苯环和碳碳双键，无饱和碳原子，其所有的碳原子均为sp2 杂化，C 正确；",
+     "D 错：随着体系中c(Y)增大，Y 在反应中起催化作用，反应初始阶段化学反应会加快，但随着反应的不断进\n行，反应物X 的浓度不断减小，且浓度的减小占主要因素，反应速率又逐渐减小，即不会一直增大，D 错\n误；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．根据X 的结构简式可知，其结构中含有酯基和酰胺基，因此可以发生水解反应，A 错误；\nB．有机物Y 中含有氨基，其呈碱性，可以与盐酸发生反应生成盐，生成的盐在水中的溶解性较好，B 错\n误；\nC．有机物Z 中含有苯环和碳碳双键，无饱和碳原子，其所有的碳原子均为sp2 杂化，C 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2024-q14",
+    "year": 2024,
+    "source": "2024年辽宁高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2024-q14.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：由均摊法得，结构1 中含有Co 的数目为\n1\n4\n4\n4.5\n8\n+ ´\n=\n，含有S 的数目为\n1\n1+12\n4\n4\n´\n=\n，Co\n与S 的原子个数比为9：8，因此结构1 的化学式为Co9S8，故A 正确；",
+     "B 对：由图可知，晶胞2 中S 与S 的最短距离为面对角线的\n1\n2 ，晶胞边长为a，即S 与S 的最短距离为：\n2\n2 a ，故B 错误；\n。\n第11 页/共23 页",
+     "C 错：如图：\n，以图中的Li 为例，与其最近的S 共4 个，故C 正确；",
+     "D 错：如图\n，当2 个晶胞2 放在一起时，图中红框截取的部分就是\n晶胞3，晶胞2 和晶胞3 表示同一晶体，故D 正确；\n故选B。"
+    ],
+    "explanation": "正确答案是B。A．由均摊法得，结构1 中含有Co 的数目为\n1\n4\n4\n4.5\n8\n+ ´\n=\n，含有S 的数目为\n1\n1+12\n4\n4\n´\n=\n，Co\n与S 的原子个数比为9：8，因此结构1 的化学式为Co9S8，故A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q2",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2025-q2.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：CO2 中C 和O 之间有两对共用电子，其结构为\n，A 错误；",
+     "B 错：H2O 的中心原子为O，根据价层电子对互斥理论，其外层电子对数为4，VSEPR 模型为四面体形，O 原\n子与H 原子形成共价键，剩余两对孤电子对，因此，H2O 为V 形分子，B 错误；",
+     "C 对：NH4Cl 由NH 4\n和Cl-组成为离子化合物，晶体类型为离子晶体，C 正确；",
+     "D 错：NH4HCO3 溶液中含有NH 4\n和HCO 3\n，NH 4\n可以与水分子形成氢键，增大了NH 4\n在水中的溶解度，D\n错误；\n故答案选C。"
+    ],
+    "explanation": "正确答案是C。A．CO2 中C 和O 之间有两对共用电子，其结构为\n，A 错误；\nB．H2O 的中心原子为O，根据价层电子对互斥理论，其外层电子对数为4，VSEPR 模型为四面体形，O 原\n子与H 原子形成共价键，剩余两对孤电子对，因此，H2O 为V 形分子，B 错误；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q3",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2025-q3.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：反应中各分子的σ键不全是p-p σ键。例如，H2O 中的H-O 键是s-p σ键，而非p-pσ键，A 错误；",
+     "B 对：根据价层电子对互斥理论，Cl2O 中O 原子周围的孤电子对数为1\n2 (6-2×1)=2，还含有2 个成键电子对，\n因此其VSEPR 模型为四面体形；H2O 中O 原子周围的孤电子对数为1\n2 (6-2×1)=2，还含有2 个成键电子对，\n因此其VSEPR 模型为四面体形；",
+     "C 错：Cl 的原子半径大于H，Cl-O 键长应大于H-O 键长，因此C 错误；",
+     "D 错：HClO 中Cl 的最外层电子数为7，其1 个价电子与O 形成共价键，剩余6 个价电子形成3 对孤电子对，\nD 错误；\n故答案选B。"
+    ],
+    "explanation": "正确答案是B。A．反应中各分子的σ键不全是p-p σ键。例如，H2O 中的H-O 键是s-p σ键，而非p-pσ键，A 错误；\nB．根据价层电子对互斥理论，Cl2O 中O 原子周围的孤电子对数为1\n2 (6-2×1)=2，还含有2 个成键电子对，\n因此其VSEPR 模型为四面体形；",
+    "real": true
+   },
+   {
+    "id": "ln2025-q9",
+    "year": 2025,
+    "source": "2025年黑吉辽蒙高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2025-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     1
+    ],
+    "optionNotes": [
+     "A 错：W 位于立方体的顶角，以顶角W 为例，在此晶胞内，离该顶角最近且距离相等的O 原子位于\n该顶角所在3 条棱的棱心，由于该顶角在8 个晶胞里，而棱上的原子被4 个晶胞共有，所以与W 最近且距\n离相等的O 原子有\n1\n3 8\n6\n4\n\n\n，故A 正确；",
+     "B 对：O 元素化合价为-2 价，负化合价总数为-6，设W 元素的平均化合价为y，据正负化合价代数和为0 可得：\n-6+y+x=0，y=6-x，x 的值增大y 减小，即W 元素的平均化合价降低，故B 错误；",
+     "C 错：0.44\nx\n0.95\n\n\n时，立方晶胞中W 个数为\n1\n8\n1\n8\n\n、O 个数为\n1\n12\n3\n4\n\n\n，若x=0.5，晶胞质量为\nA\n184 16 3\n23x\nm\ng\nN\n\n\n\n，晶胞体积为\n\n\n10\n3\nV\na 10\ncm\n\n\n\n",
+     "D 错：x\n3\nNa WO 晶体因x 变化形成空位而导致颜色各异，即空位数不同，吸收的可见光波长不同，故D 正确；"
+    ],
+    "explanation": "正确答案是B。A．W 位于立方体的顶角，以顶角W 为例，在此晶胞内，离该顶角最近且距离相等的O 原子位于\n该顶角所在3 条棱的棱心，由于该顶角在8 个晶胞里，而棱上的原子被4 个晶胞共有，所以与W 最近且距\n离相等的O 原子有\n1\n3 8\n6\n4\n\n\n，故A 正确；",
+    "real": true
+   },
+   {
+    "id": "ln2026-q9",
+    "year": 2026,
+    "source": "2026年黑吉辽蒙高考化学",
+    "pointId": "g3-14",
+    "multi": false,
+    "image": "real/ln2026-q9.png",
+    "stem": "",
+    "options": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "answerIndexes": [
+     2
+    ],
+    "optionNotes": [
+     "A 错：晶胞Ⅱ中，白球（Si）的个数为\n1\n8\n1\n2\n8\n\n+ =\n，灰球（V ）的个数为\n1\n12\n6\n2\n\n=\n，因此\n:\n6: 2\n3:1\nx y =\n=\n，\nA 正确；",
+     "B 错：以晶胞内部的Si为例，周围等距紧邻的V 共12 个，因此与Si紧邻的V 为12 个，B 正确；",
+     "C 对：V 是第ⅤB 族元素，每个V 价层电子数为5；Si是第ⅣA 族元素，每个Si 价层电子数为4。该晶胞含6\n个V 、2 个Si，总价层电子总数\n6 5\n2 4\n38\n19\n= + \n=\n\n，C 错误；",
+     "D 错：金属钒晶胞Ⅰ中紧邻V 间距为0.30nm ，V Si\nx\ny 中紧邻V 间距为0.24nm ，由题干可知，紧邻钒原子间\n的距离变短可增强超导性能距离更短，因此V Si\nx\ny 的超导性质优于金属钒，D 正确； \n故选C。"
+    ],
+    "explanation": "正确答案是C。A．晶胞Ⅱ中，白球（Si）的个数为\n1\n8\n1\n2\n8\n\n+ =\n，灰球（V ）的个数为\n1\n12\n6\n2\n\n=\n，因此\n:\n6: 2\n3:1\nx y =\n=\n，\nA 正确； \nB．以晶胞内部的Si为例，周围等距紧邻的V 共12 个，因此与Si紧邻的V 为12 个，B 正确； \nC．V 是第ⅤB 族元素，每个V 价层电子数为5；",
+    "real": true
+   }
+  ],
   "grade": "senior"
  }
 ]</script>
@@ -4167,8 +6479,8 @@ button[hidden]{display:none!important}
 (function(){
   'use strict';
 
-  var APP_VERSION = '1.2.0';
-  var APP_BUILD = '2026-11-19';
+  var APP_VERSION = '1.3.0';
+  var APP_BUILD = '2026-11-23';
   document.documentElement.setAttribute('data-version', APP_VERSION);
   document.documentElement.setAttribute('data-build', APP_BUILD);
 
@@ -4212,7 +6524,7 @@ button[hidden]{display:none!important}
 
   var current = {
     point: null, index: -1, step: 0, playing: false, paused: false,
-    soundOn: true, audio: null, timers: [], speechBtn: null,
+    soundOn: true, audio: null, timers: [], speechBtn: null, realOpen: false,
     from: 0, downloading: false
   };
 
@@ -4445,7 +6757,10 @@ button[hidden]{display:none!important}
     DATA.forEach(function(p){ totalSteps += p.steps.length; totalQs += p.questions.length; });
     if(el('homeTitle')) el('homeTitle').textContent = DATA.length + ' 个知识点，每个 3 步看懂';
     var examLabel = (DATA[0] && DATA[0].grade === 'senior') ? '高考真题改编' : '中考真题改编';
-    if(el('homeSub')) el('homeSub').textContent = totalSteps + ' 段动画 · ' + totalQs + ' 道' + examLabel + ' · 每题逐项解析';
+    var realCount = 0;
+    DATA.forEach(function(p){ realCount += (p.realQuestions || []).length; });
+    if(el('homeSub')) el('homeSub').textContent = totalSteps + ' 段动画 · ' + totalQs + ' 道' + examLabel +
+      (realCount ? (' · 另含 ' + realCount + ' 道高考真题') : '') + ' · 每题逐项解析';
     wrap.innerHTML = '';
     var idx = 0;
     unitList().forEach(function(group){
@@ -4754,32 +7069,133 @@ button[hidden]{display:none!important}
   }
 
   /* ---------- 题库 ---------- */
+  function correctIdxs(q){
+    if(q.answerIndexes && q.answerIndexes.length) return q.answerIndexes.slice();
+    return [q.answerIndex];
+  }
+  function isMulti(q){ return correctIdxs(q).length > 1; }
+  function sameSet(a, b){
+    if(!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+    var x = a.slice().sort(), y = b.slice().sort();
+    for(var i = 0; i < x.length; i++){ if(x[i] !== y[i]) return false; }
+    return true;
+  }
+  function isCorrect(q, chosen){
+    if(Array.isArray(chosen)) return sameSet(chosen, correctIdxs(q));
+    return chosen === correctIdxs(q)[0];
+  }
+  function answerLetters(q){
+    return correctIdxs(q).map(function(i){ return letter(i); }).join('、');
+  }
+
   function buildFeedback(q, chosen){
-    var ok = chosen === q.answerIndex;
+    var idxs = correctIdxs(q);
+    var ok = isCorrect(q, chosen);
     var notes = q.optionNotes.map(function(n, i){
-      return '<p class="' + (i === q.answerIndex ? 'ok' : '') + '">' + esc(n) + '</p>';
+      return '<p class="' + (idxs.indexOf(i) >= 0 ? 'ok' : '') + '">' + esc(n) + '</p>';
     }).join('');
     return '<div class="verdict ' + (ok ? 'ok' : 'no') + '">' +
-      (ok ? '✓ 回答正确' : '✗ 正确答案是 ' + letter(q.answerIndex)) +
+      (ok ? '✓ 回答正确' : '✗ 正确答案是 ' + answerLetters(q)) +
       '</div><div class="notes">' + notes + '</div>' +
       '<div class="explain"><b>解析</b> ' + esc(q.explanation) + '</div>' +
-      '<div class="q-actions"><button class="speak" type="button">🔊 听讲解</button></div>';
+      '<div class="q-actions"><button class="speak" type="button">🔊 听讲解</button>' +
+      '<button class="redo" type="button">↻ 重做本题</button></div>';
   }
 
   function revealQuestion(card, q, chosen, qi){
+    var idxs = correctIdxs(q);
     var opts = card.querySelectorAll('.opt');
     for(var i = 0; i < opts.length; i++){
       opts[i].disabled = true;
-      if(i === q.answerIndex) opts[i].classList.add('correct');
-      if(i === chosen && chosen !== q.answerIndex) opts[i].classList.add('wrong');
+      if(idxs.indexOf(i) >= 0) opts[i].classList.add('correct');
+      var picked = Array.isArray(chosen) ? chosen.indexOf(i) >= 0 : i === chosen;
+      if(picked && idxs.indexOf(i) < 0) opts[i].classList.add('wrong');
     }
+    var sub = card.querySelector('.submit-answer');
+    if(sub){ sub.disabled = true; sub.textContent = '已提交'; }
     var fb = card.querySelector('.q-feedback');
     fb.innerHTML = buildFeedback(q, chosen);
     fb.classList.remove('hidden');
     var btn = fb.querySelector('.speak');
-    btn.addEventListener('click', function(){
-      speakQuestion(q, qi, btn);
-    });
+    if(btn) btn.addEventListener('click', function(){ speakQuestion(q, qi, btn); });
+    var redo = fb.querySelector('.redo');
+    if(redo) redo.addEventListener('click', function(){ redoQuestion(q); });
+  }
+
+  function questionCard(q, qi, container, tag, after){
+    var multi = isMulti(q);
+    var card = document.createElement('div');
+    card.className = 'q card';
+    card.setAttribute('data-q', q.id);
+    var opts = q.options.map(function(o, i){
+      var txt = (q.image && o === letter(i)) ? '' : esc(o);
+      return '<button class="opt" type="button" data-i="' + i + '">' +
+        '<span class="letter">' + letter(i) + '</span>' + (txt ? '<span>' + txt + '</span>' : '') + '</button>';
+    }).join('');
+    var realTag = q.real ? '<span class="real-tag">真题</span>' : '';
+    card.innerHTML =
+      '<div class="q-top"><span class="q-idx">' + esc(tag) + '</span>' + realTag +
+      (q.angle ? '<span class="angle">' + esc(q.angle) + '</span>' : '') +
+      '<span class="source">' + esc(q.source) + '</span></div>' +
+      (q.stem ? '<p class="stem">' + esc(q.stem) + '</p>' : '') +
+      (q.image ? '<img class="q-image" src="' + esc(q.image) + '" alt="原题配图">' : '') +
+      (multi ? '<div class="multi-tip">多选题：选出所有正确项，再点“提交答案”</div>' : '') +
+      '<div class="opts' + (q.image ? ' compact' : '') + '">' + opts + '</div>' +
+      (multi ? '<button class="submit-answer" type="button">提交答案</button>' : '') +
+      '<div class="q-feedback hidden"></div>';
+
+    var btns = card.querySelectorAll('.opt');
+    var answered = Object.prototype.hasOwnProperty.call(store.answers, q.id);
+    var sel = Array.isArray(store.answers[q.id]) ? store.answers[q.id].slice() : [];
+    function markSel(){
+      for(var k = 0; k < btns.length; k++){
+        btns[k].classList.toggle('selected', sel.indexOf(k) >= 0);
+      }
+    }
+    for(var i = 0; i < btns.length; i++){
+      (function(idx){
+        btns[idx].addEventListener('click', function(){
+          if(Object.prototype.hasOwnProperty.call(store.answers, q.id)) return;
+          if(multi){
+            var at = sel.indexOf(idx);
+            if(at >= 0) sel.splice(at, 1); else sel.push(idx);
+            markSel();
+            return;
+          }
+          store.answers[q.id] = idx;
+          if(idx === correctIdxs(q)[0]){ delete store.wrong[q.id]; }
+          else { store.wrong[q.id] = 1; }
+          save();
+          revealQuestion(card, q, idx, qi);
+          after();
+        });
+      })(i);
+    }
+    var sub = card.querySelector('.submit-answer');
+    if(sub){
+      sub.addEventListener('click', function(){
+        if(Object.prototype.hasOwnProperty.call(store.answers, q.id) || !sel.length) return;
+        store.answers[q.id] = sel.slice().sort();
+        if(sameSet(store.answers[q.id], correctIdxs(q))){ delete store.wrong[q.id]; }
+        else { store.wrong[q.id] = 1; }
+        save();
+        revealQuestion(card, q, store.answers[q.id], qi);
+        after();
+      });
+    }
+    if(answered){
+      if(multi) markSel();
+      revealQuestion(card, q, store.answers[q.id], qi);
+    }
+    container.appendChild(card);
+  }
+
+  function updateRedoAll(){
+    var b = el('redoAll');
+    if(!b || !current.point) return;
+    var n = pointAnswered(current.point);
+    b.disabled = n === 0;
+    b.style.opacity = n === 0 ? '.45' : '1';
   }
 
   function renderQuestions(){
@@ -4787,43 +7203,14 @@ button[hidden]{display:none!important}
     var wrap = el('questions');
     wrap.innerHTML = '';
     p.questions.forEach(function(q, qi){
-      var card = document.createElement('div');
-      card.className = 'q card';
-      card.setAttribute('data-q', q.id);
-      var opts = q.options.map(function(o, i){
-        return '<button class="opt" type="button" data-i="' + i + '">' +
-          '<span class="letter">' + letter(i) + '</span><span>' + esc(o) + '</span></button>';
-      }).join('');
-      card.innerHTML =
-        '<div class="q-top"><span class="q-idx">Q' + (qi + 1) + '</span>' +
-        '<span class="angle">' + esc(q.angle) + '</span>' +
-        '<span class="source">' + esc(q.source) + '</span></div>' +
-        '<p class="stem">' + esc(q.stem) + '</p>' +
-        '<div class="opts">' + opts + '</div>' +
-        '<div class="q-feedback hidden"></div>';
-
-      var btns = card.querySelectorAll('.opt');
-      for(var i = 0; i < btns.length; i++){
-        (function(idx){
-          btns[idx].addEventListener('click', function(){
-            if(Object.prototype.hasOwnProperty.call(store.answers, q.id)) return;
-            store.answers[q.id] = idx;
-            if(idx === q.answerIndex){ delete store.wrong[q.id]; }
-            else { store.wrong[q.id] = 1; }
-            save();
-            revealQuestion(card, q, idx, qi);
-            updateStats();
-            updateQProgress();
-          });
-        })(i);
-      }
-
-      if(Object.prototype.hasOwnProperty.call(store.answers, q.id)){
-        revealQuestion(card, q, store.answers[q.id], qi);
-      }
-      wrap.appendChild(card);
+      questionCard(q, qi, wrap, 'Q' + (qi + 1), function(){
+        updateStats();
+        updateQProgress();
+        updateRedoAll();
+      });
     });
     updateQProgress();
+    updateRedoAll();
   }
 
   function updateQProgress(){
@@ -4832,10 +7219,87 @@ button[hidden]{display:none!important}
     var n = pointAnswered(p);
     var right = 0;
     p.questions.forEach(function(q){
-      var a = store.answers[q.id];
-      if(a === q.answerIndex) right++;
+      if(Object.prototype.hasOwnProperty.call(store.answers, q.id) && isCorrect(q, store.answers[q.id])) right++;
     });
     el('qProgress').textContent = '已答 ' + n + '/5 · 答对 ' + right;
+  }
+
+  function redoQuestion(q){
+    delete store.answers[q.id];
+    delete store.wrong[q.id];
+    save();
+    updateStats();
+    if(q.real) renderReal();
+    else renderQuestions();
+  }
+
+  function redoAllBase(){
+    var p = current.point;
+    if(!p) return;
+    p.questions.forEach(function(q){ delete store.answers[q.id]; delete store.wrong[q.id]; });
+    save();
+    renderQuestions();
+    updateStats();
+  }
+
+  function redoAllReal(){
+    var p = current.point;
+    if(!p) return;
+    (p.realQuestions || []).forEach(function(q){ delete store.answers[q.id]; delete store.wrong[q.id]; });
+    save();
+    renderReal();
+    updateStats();
+  }
+
+  function updateRealProgress(){
+    var p = current.point;
+    if(!p || !p.realQuestions) return;
+    var n = 0, right = 0;
+    p.realQuestions.forEach(function(q){
+      if(Object.prototype.hasOwnProperty.call(store.answers, q.id)){
+        n++;
+        if(isCorrect(q, store.answers[q.id])) right++;
+      }
+    });
+    var elx = el('realProgress');
+    if(elx) elx.textContent = '已答 ' + n + '/' + p.realQuestions.length + ' · 答对 ' + right;
+  }
+
+  function renderReal(){
+    var p = current.point;
+    var wrap = el('realBank');
+    if(!wrap) return;
+    wrap.innerHTML = '';
+    var list = (p && p.realQuestions) || [];
+    if(!list.length) return;
+    if(!current.realOpen){
+      wrap.innerHTML = '<div class="card real-teaser">' +
+        '<div><b>高考真题加练</b><span>本知识点还有 ' + list.length + ' 道真题，含逐项错因解析</span></div>' +
+        '<button id="openReal" type="button">继续做真题</button></div>';
+      var open = el('openReal');
+      if(open) open.addEventListener('click', function(){
+        current.realOpen = true;
+        renderReal();
+      });
+      return;
+    }
+    wrap.innerHTML = '<div class="q-head real-head"><h2>高考真题 · 加练</h2>' +
+      '<span id="realProgress"></span>' +
+      '<button id="closeReal" type="button" class="redo-all">收起真题</button>' +
+      '<button id="redoReal" type="button" class="redo-all">↻ 重做全部真题</button></div>' +
+      '<div id="realQuestions"></div>';
+    var qbox = el('realQuestions');
+    list.forEach(function(q, qi){
+      questionCard(q, qi, qbox, 'R' + (qi + 1), function(){
+        updateStats();
+        updateRealProgress();
+      });
+    });
+    var close = el('closeReal');
+    if(close) close.addEventListener('click', function(){ current.realOpen = false; renderReal(); });
+    var redo = el('redoReal');
+    if(redo) redo.addEventListener('click', redoAllReal);
+    updateRealProgress();
   }
 
   /* ---------- 语音朗读 ---------- */
@@ -4902,6 +7366,8 @@ button[hidden]{display:none!important}
 
     renderChips(p);
     renderQuestions();
+    current.realOpen = false;
+    renderReal();
     setStep(typeof stepIdx === 'number' ? stepIdx : 0);
     updateLearnedTag();
     var lv = el('lessonVersion');
